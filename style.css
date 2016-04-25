@@ -10,3 +10,9 @@ body {
     content: '\2022';
     padding-right: 3px;
 }
+
+.panel-primary > .panel-heading {
+    background-color: #36a7ea;
+    border-color: #36a7ea;
+    background-image: none;
+}

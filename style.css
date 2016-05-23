@@ -2,6 +2,28 @@ body {
     padding-top: 50px;
 }
 
+.navbar-inverse {
+    background-image: none;
+    background-color: #36a7ea;
+    border-color: #36a7ea;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFF;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color: #dddddd;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #dddddd;
+}
+
 .panel-primary > .panel-heading {
     background-color: #36a7ea;
     border-color: #36a7ea;

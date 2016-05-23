@@ -2,19 +2,18 @@ body {
     padding-top: 50px;
 }
 
-.list-inline li {
-    display: block;
-    float: left;
-}
-.list-inline li::before {
-    content: '\2022';
-    padding-right: 3px;
-}
-
 .panel-primary > .panel-heading {
     background-color: #36a7ea;
     border-color: #36a7ea;
     background-image: none;
+}
+
+.navbar-brand .glyphicon {
+    font-size: 1.5em;
+}
+
+.navbar-brand .app-name {
+    vertical-align: super;
 }
 
 .form-signin {

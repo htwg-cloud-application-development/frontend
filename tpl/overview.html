@@ -56,6 +56,17 @@
                             <th class="text-center">Violations</th>
                         </tr>
                         </thead>
+                        <tbody>
+                            <tr *ngFor="let group of course.groups">
+                                <th>
+                                    {{group.name}}
+                                </th>
+                                <td class="text-right">{{group.result.loc}}</td>
+                                <td class="text-right">{{group.result.comments | number:'1.1-1'}} %</td>
+                                <td class="text-right">{{group.result.duplications}}</td>
+                                <td class="text-right">{{group.result.violations}}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

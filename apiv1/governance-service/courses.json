@@ -1,0 +1,64 @@
+[
+  {
+    "courseId": 1001,
+    "name": "Grundlagen der Programmiertechnik 2016",
+    "groups": [
+      {
+        "name": "Gruppe1",
+        "groupId": 1
+      },
+      {
+        "name": "Gruppe2",
+        "groupId": 2
+      },
+      {
+        "name": "Gruppe3",
+        "groupId": 3
+      },
+      {
+        "name": "Gruppe4",
+        "groupId": 4
+      },
+      {
+        "name": "Gruppe5",
+        "groupId": 5
+      }
+    ]
+  },
+  {
+    "courseId": 1002,
+    "name": "Fortgeschrittene Programmiertechnik 2016",
+    "groups": [
+    ]
+  },
+  {
+    "courseId": 1003,
+    "name": "Systemprogrammierung 2016",
+    "groups": [
+    ]
+  },
+  {
+    "courseId": 1004,
+    "name": "Algorithmen und Theoretische Informatik 2016",
+    "groups": [
+    ]
+  },
+  {
+    "courseId": 1005,
+    "name": "Web-Technologien 2016",
+    "groups": [
+    ]
+  },
+  {
+    "courseId": 1006,
+    "name": "Softwarearchitekturen 2016",
+    "groups": [
+    ]
+  },
+  {
+    "courseId": 1007,
+    "name": "Systemsoftware 2016",
+    "groups": [
+    ]
+  }
+]

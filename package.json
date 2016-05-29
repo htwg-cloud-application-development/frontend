@@ -1,6 +1,6 @@
 {
-  "name": "angular2-quickstart",
-  "version": "1.0.0",
+  "name": "htwg-cloud-app-dev",
+  "version": "1.0.0-alpha.1",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",

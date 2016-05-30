@@ -22,7 +22,7 @@
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control js-course-filter" name="course" placeholder="Search">
+                    <input type="text" class="form-control js-course-filter" placeholder="Search" autofocus [(ngModel)]="filterCourse" #inputCourseFilter>
                 </div>
             </form>
         </div>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div *ngFor="let course of courses" class="panel panel-primary">
+        <div *ngFor="let course of courses | courseFilter:filterCourse" class="panel panel-primary">
             <div class="panel-heading" role="tab">
                 <h4 class="panel-title">
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{course.courseId}}" aria-expanded="false">

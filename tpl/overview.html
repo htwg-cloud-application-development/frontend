@@ -59,7 +59,7 @@
                         <tbody>
                             <tr *ngFor="let group of course.groups">
                                 <th>
-                                    {{group.name}}
+                                    <a href="#" (click)="onGroupClick($event, group)">{{group.name}}</a>
                                 </th>
                                 <td class="text-right">{{group.result.loc}}</td>
                                 <td class="text-right">{{group.result.comments | number:'1.1-1'}} %</td>

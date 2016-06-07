@@ -16,4 +16,8 @@ export class RestService {
     getCourses(): any {
         return this.httpGet('/governance/courses');
     }
+
+    login(username: String, password: String): any {
+        return this.httpGet("/login?username=" + username + "&password=" + password);
+    }
 }

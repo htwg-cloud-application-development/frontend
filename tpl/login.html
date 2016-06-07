@@ -25,17 +25,15 @@
 </nav>
 
 <div class="container">
-    <form class="form-signin">
+    <form [hidden]="!showLogin" class="form-signin" (ngSubmit)="onSubmit()" #login="ngForm">
         <h2 class="form-signin-heading">Please login</h2>
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" type="email">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password">
-        <div class="checkbox">
-            <label>
-                <input value="remember-me" type="checkbox"> Remember me
-            </label>
+        <div [hidden]="!loginError" class="alert alert-danger text-center" role="alert">
+            <strong>Login failed!</strong><br/> Invalid username or password.
         </div>
+        <label for="username" class="sr-only">Username</label>
+        <input class="form-control" placeholder="Username" required type="text" [(ngModel)]="model.username" ngControl="username"  #name="ngForm">
+        <label for="password" class="sr-only">Password</label>
+        <input class="form-control" placeholder="Password" required type="password"  [(ngModel)]="model.password" ngControl="password"  #name="ngForm">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
 </div>

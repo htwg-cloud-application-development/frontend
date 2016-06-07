@@ -10,10 +10,10 @@ export class RestService {
     constructor(private http: Http) {}
 
     private httpGet(path: String): any {
-        return this.http.get(CONFIG.rest_api + path + '.json');
+        return this.http.get(CONFIG.rest_api + path);
     }
 
     getCourses(): any {
-        return this.httpGet('/governance-service/courses');
+        return this.httpGet('/governance/courses');
     }
 }

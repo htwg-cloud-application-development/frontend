@@ -1,0 +1,4 @@
+export const CONFIG = {
+    "rest_api": "http://rest.example.com",
+    "moodle_api": "http://moodle.example.com"
+};

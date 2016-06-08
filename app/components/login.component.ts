@@ -15,7 +15,7 @@ export class ImportComponent {
     model: Login;
     selected: Object;
 
-    courses: Array<Object>;
+    courses: Array<any>;
     loginError: boolean;
     showLogin: boolean;
     showLoader: boolean;
@@ -84,7 +84,7 @@ export class ImportComponent {
         for(var key in this.selected) {
             if (this.selected[key]) {
                 for (var course of this.courses) {
-                    if (course.id == key) {
+                    if (course["id"] == key) {
                         result.push(course);
                     }
                 }

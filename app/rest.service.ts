@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Http, RequestOptionsArgs, Response } from '@angular/http';
+import { Http, RequestOptionsArgs } from '@angular/http';
 
 import { CONFIG } from './config';
 
@@ -9,11 +9,11 @@ export class RestService {
 
     constructor(private http: Http) {}
 
-    private httpGet(path: String): Observable<Response> {
+    private httpGet(path: String): any {
         return this.http.get(CONFIG.rest_api + path);
     }
 
-    private httpPost(path: String, body: string, options?: RequestOptionsArgs): Observable<Response> {
+    private httpPost(path: String, body: string, options?: RequestOptionsArgs): any {
         return this.http.post(CONFIG.rest_api + path, body, options);
     }
 

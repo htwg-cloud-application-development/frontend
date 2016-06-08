@@ -7,7 +7,7 @@ import { RestService } from '../rest.service';
 
 @Component({
     selector: 'cloud-app',
-    templateUrl: '/tpl/login.html',
+    templateUrl: '/tpl/import.html',
     providers: [RestService, ConnectionBackend],
     directives: [ROUTER_DIRECTIVES]
 })

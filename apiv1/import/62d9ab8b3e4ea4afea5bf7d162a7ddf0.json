@@ -1,0 +1,19 @@
+{
+  "courses": [
+    {
+      "id": 1337,
+      "shortname": "SE-AIN",
+      "fullname": "Software Engineering"
+    },
+    {
+      "id": 42,
+      "shortname": "MDSD",
+      "fullname": "Modellgetriebene Softwareentwicklung"
+    },
+    {
+      "id": 1234,
+      "shortname": "CLOUD",
+      "fullname": "Cloud Application Development (Master)"
+    }
+  ]
+}

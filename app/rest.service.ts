@@ -22,7 +22,7 @@ export class RestService {
     }
 
     login(username: String, password: String): any {
-        return this.httpGet("/login?username=" + username + "&password=" + password);
+        return this.httpPost("/login", JSON.stringify({"username": username, "password": password}));
     }
 
     getUserCourses(token: String): any {

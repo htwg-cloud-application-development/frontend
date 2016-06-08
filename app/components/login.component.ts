@@ -11,7 +11,7 @@ import { RestService } from '../rest.service';
     providers: [RestService, ConnectionBackend],
     directives: [ROUTER_DIRECTIVES]
 })
-export class LoginComponent {
+export class ImportComponent {
     model: Login;
     selected: Object;
 

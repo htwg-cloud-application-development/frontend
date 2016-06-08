@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 import { OverviewComponent } from './components/overview.component';
-import { LoginComponent } from './components/login.component';
+import { ImportComponent } from './components/login.component';
 import { AboutComponent } from './components/about.component';
 
 @Component({
@@ -23,7 +23,7 @@ import { AboutComponent } from './components/about.component';
     {
         path: '/login',
         name: 'Login',
-        component: LoginComponent
+        component: ImportComponent
     },
     {
         path: '/about',

@@ -25,7 +25,15 @@
 </nav>
 
 <div class="container">
-    <form [hidden]="!showLogin" class="form-signin" (ngSubmit)="onSubmit()" #login="ngForm">
+    <div [hidden]="!showLoader" class="loader text-center">
+        <i class="glyphicon glyphicon-refresh gly-spin"></i>
+    </div>
+
+    <div [hidden]="!showSuccess" class="alert alert-success text-center col-md-6  col-md-offset-3" role="alert" style="margin-top: 20px;">
+        <strong>Well done!</strong> Import was successful.
+    </div>
+
+    <form [hidden]="!showLogin" class="form-signin" (ngSubmit)="onLoginSubmit()" #login="ngForm">
         <h2 class="form-signin-heading">Please login</h2>
         <div [hidden]="!loginError" class="alert alert-danger text-center" role="alert">
             <strong>Login failed!</strong><br/> Invalid username or password.
@@ -36,4 +44,29 @@
         <input class="form-control" placeholder="Password" required type="password"  [(ngModel)]="model.password" ngControl="password"  #name="ngForm">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
+
+    <div [hidden]="showLogin" class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h1>Select courses</h1>
+        </div>
+        <form (ngSubmit)="onImportSubmit()" #import="ngForm">
+            <div *ngFor="let course of courses" class="panel panel-primary">
+                <div class="panel-heading" role="tab">
+                    <input type="checkbox" value="{{course.id}}" id="course{{course.id}}" #cf (change)="onChange(course.id,cf.checked)">
+                    <label attr.for="course{{course.id}}" class="panel-title">
+                        {{course.shortname}} - {{course.fullname}}
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-danger btn-block" type="button" (click)="onAbort()">Abort</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Import</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

@@ -12,14 +12,34 @@ import { RestService } from '../rest.service';
     directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
+    model: Login;
+    selected: Object;
 
-    model = new Login();
-    loginError = false;
-    showLogin = true;
+    courses: Array<Object>;
+    loginError: boolean;
+    showLogin: boolean;
+    showLoader: boolean;
+    showSuccess: boolean;
+    token: String;
 
-    constructor(private rest: RestService) {}
+    constructor(private rest: RestService) {
+        this.reset();
+    }
 
-    onSubmit() {
+    reset() {
+        this.model = new Login('', '');
+        this.courses = [];
+        this.selected = {};
+        this.loginError = false;
+        this.showLogin = true;
+        this.showLoader = false;
+        this.showSuccess = false;
+        this.token = null;
+    }
+
+    onLoginSubmit() {
+        this.showSuccess = false;
+        this.showLoader = true;
         this.rest.login(this.model.username, this.model.password).subscribe((res: Response) => {
             this.handleLogin(res.json());
         });
@@ -28,9 +48,49 @@ export class LoginComponent {
     handleLogin(json) {
         if (json.token == null) {
             this.loginError = true;
+            this.showLoader = false;
         } else {
-            this.showLogin = false;
+            this.token = json.token;
+            this.rest.getUserCourses(json.token).subscribe((res: Response) => {
+                this.showLogin = false;
+                this.showLoader = false;
+                this.courses = res.json().courses;
+            });
         }
+    }
+
+    onAbort() {
+        this.reset();
+    }
+
+    onChange(courseId,flag){
+        this.selected[courseId] = flag;
+    }
+
+    onImportSubmit() {
+        this.rest.sendImportCourses(this.token, {"courses": this.getSelectedCourses()}).subscribe(
+            (res: Response) => {
+                this.reset();
+                this.showSuccess = true;
+            },
+            (err: Response) => {
+                this.reset();
+                this.showSuccess = true;
+            });
+    }
+
+    getSelectedCourses(): Array<Object> {
+        var result = [];
+        for(var key in this.selected) {
+            if (this.selected[key]) {
+                for (var course of this.courses) {
+                    if (course.id == key) {
+                        result.push(course);
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
 

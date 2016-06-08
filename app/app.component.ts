@@ -21,8 +21,8 @@ import { AboutComponent } from './components/about.component';
         component: OverviewComponent
     },
     {
-        path: '/login',
-        name: 'Login',
+        path: '/import',
+        name: 'Import',
         component: ImportComponent
     },
     {

@@ -12,18 +12,24 @@
                 ({{context.group.checkstyle.numberOfErrors + context.group.checkstyle.numberOfWarnings}} violations)
             </a>
         </li>
+        <li role="presentation">
+            <a href="#details-pmd" aria-controls="home" role="tab" data-toggle="tab">
+                <strong>PMD</strong>
+                ({{context.group.pmd.numberOfErrors + context.group.pmd.numberOfWarnings}} violations)
+            </a>
+        </li>
     </ul>
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="details-checkstyle">
-            <div class="panel-group" id="accordion-files" role="tablist" aria-multiselectable="true">
+            <div class="panel-group" id="accordion-checkstyle" role="tablist" aria-multiselectable="true">
                 <div *ngFor="let assignment of context.group.checkstyle.assignments; let i = index">
 
                     <div *ngFor="let item of assignment | values">
                         <div *ngFor="let file of item; let j = index" class="panel panel-primary">
                             <div class="panel-heading" role="tab">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#file-{{i}}-{{j}}" aria-expanded="false">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#checkstyle-{{i}}-{{j}}" aria-expanded="false">
                                         {{file.filepath}}
                                         <span class="pull-right">
                                             <span class="glyphicon glyphicon-alert text-danger" aria-hidden="true"></span>
@@ -32,7 +38,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <div id="file-{{i}}-{{j}}" class="panel-collapse collapse" role="tabpanel">
+                            <div id="checkstyle-{{i}}-{{j}}" class="panel-collapse collapse" role="tabpanel">
                                 <div class="panel-body">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
@@ -60,6 +66,57 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="details-pmd">
+            <div class="panel-group" id="accordion-pmd" role="tablist" aria-multiselectable="true">
+
+                <div *ngFor="let assignment of context.group.pmd.assignments; let i = index">
+                    <div *ngFor="let item of assignment | values">
+                        <div *ngFor="let file of item; let j = index" class="panel panel-primary">
+
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#pmd-{{i}}-{{j}}" aria-expanded="false">
+                                        {{file.filepath}}
+                                        <span class="pull-right">
+                                            <span class="glyphicon glyphicon-alert text-danger" aria-hidden="true"></span>
+                                            {{file.errors.length}}
+                                        </span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="pmd-{{i}}-{{j}}" class="panel-collapse collapse" role="tabpanel">
+                                <div class="panel-body">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Begin</th>
+                                                <th>End</th>
+                                                <th>Message</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let violation of file.errors">
+                                                <td>
+                                                    <span class="text-nowrap"><strong>Line:</strong> {{violation.lineBegin}}</span><br />
+                                                    <span class="text-nowrap"><strong>Column:</strong> {{violation.columnBegin}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-nowrap"><strong>Line:</strong> {{violation.lineEnd}}</span><br />
+                                                    <span class="text-nowrap"><strong>Column:</strong> {{violation.columnEnd}}</span>
+                                                </td>
+                                                <td>{{violation.message}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

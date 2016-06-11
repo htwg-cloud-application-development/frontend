@@ -125,3 +125,7 @@ body {
     padding: 20px 0;
     font-size: 32px;
 }
+
+.panel-title a {
+    font-weight: bold;
+}

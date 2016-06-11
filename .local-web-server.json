@@ -48,16 +48,57 @@
               {
                 "groupId": 1,
                 "name": "Gruppe1",
-                "result": {
-                  "loc": 500,
-                  "comments": 40.9,
-                  "duplications": 1,
-                  "violations": 40
-                }
+                "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo"
               }
             ]
           }
         ]
+      }
+    },
+    {
+      "route": "/governance/courses/:id",
+      "response": {
+        "body": {
+          "courseId": 1001,
+          "name": "Grundlagen der Programmiertechnik 2016",
+          "groups": [
+            {
+              "groupId": 1,
+              "name": "Gruppe1",
+              "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
+              "pmd": {
+                "numberOfIgnores": 0,
+                "totalExpendedTime": 90863,
+                "assignments": [
+                  {
+                    "uebung1": [
+                      {
+                        "filepath": "repositories\\cloud-app-testrep_1465196229797\\uebung1\\Main.java",
+                        "errors": [
+                          {
+                            "columnEnd": "1",
+                            "package": "uebung1",
+                            "lineBegin": "3",
+                            "ruleset": "Design",
+                            "rule": "UseUtilityClass",
+                            "columnBegin": "19",
+                            "priority": "3",
+                            "message": "\nAll methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.\n",
+                            "lineEnd": "31",
+                            "class": "Main"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "numberOfWarnings": 1,
+                "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
+                "numberOfErrors": 48
+              }
+            }
+          ]
+        }
       }
     }
   ]

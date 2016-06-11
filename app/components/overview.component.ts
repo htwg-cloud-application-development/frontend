@@ -17,10 +17,11 @@ import { ModalWindow, ModalContext } from './custom-modal';
 })
 export class OverviewComponent {
     @ViewChild('inputCourseFilter') inputElementRef;
-    courses: Array<String>;
+    courses: Array<Object>;
     filterCourse: String;
+    currentCourse: Object = {"courseId": -1};
 
-    constructor(private modal: Modal, renderer: Renderer, rest: RestService, viewContainer: ViewContainerRef) {
+    constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
         rest.getCourses().subscribe((res: Response) => {
             this.courses = res.json();
             renderer.invokeElementMethod(this.inputElementRef.nativeElement, 'focus', []);
@@ -32,5 +33,13 @@ export class OverviewComponent {
     onGroupClick(event: MouseEvent, group) {
         event.preventDefault();
         this.modal.open(ModalWindow, new ModalContext(group));
+    }
+
+    onToggleCollapse(course: any, panel: any) {
+        if (panel.getAttribute("aria-expanded") == "false") {
+            this.rest.getCourseDetails(course.courseId).subscribe((res: Response) => {
+                this.currentCourse = res.json();
+            });
+        }
     }
 }

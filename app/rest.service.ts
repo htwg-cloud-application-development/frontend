@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Http, RequestOptionsArgs } from '@angular/http';
+import { Http, RequestOptionsArgs, Headers } from '@angular/http';
 
 import { CONFIG } from './config';
 
@@ -14,7 +14,9 @@ export class RestService {
     }
 
     private httpPost(path: String, body: string, options?: RequestOptionsArgs): any {
-        return this.http.post(CONFIG.rest_api + path, body, options);
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(CONFIG.rest_api + path, body, {headers: headers});
     }
 
     getCourses(): any {

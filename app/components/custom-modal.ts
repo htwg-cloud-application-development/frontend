@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {DialogRef, ModalComponent} from 'angular2-modal';
-import {BSModalContext} from 'angular2-modal/plugins/bootstrap/index';
+import { DialogRef, ModalComponent } from 'angular2-modal';
+import { BSModalContext } from 'angular2-modal/plugins/bootstrap/index';
+
+import { ValuesPipe } from './values.pipe';
 
 export class ModalContext extends BSModalContext {
     constructor(public group) {
@@ -12,7 +14,8 @@ export class ModalContext extends BSModalContext {
 
 @Component({
     selector: 'modal-content',
-    templateUrl: '/tpl/modal.html'
+    templateUrl: '/tpl/modal.html',
+    pipes: [ValuesPipe]
 })
 export class ModalWindow implements ModalComponent<ModalContext> {
     context: ModalContext;

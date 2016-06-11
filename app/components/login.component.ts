@@ -54,7 +54,7 @@ export class ImportComponent {
             this.rest.getUserCourses(json.token).subscribe((res: Response) => {
                 this.showLogin = false;
                 this.showLoader = false;
-                this.courses = res.json().courses;
+                this.courses = res.json();
             });
         }
     }

@@ -2,19 +2,19 @@
   "verbose": true,
   "mocks": [
     {
-      "route": "/login",
+      "route": "/governance/login",
       "response": {
         "body": { "token":"62d9ab8b3e4ea4afea5bf7d162a7ddf0" }
       }
     },
     {
-      "route": "/import/courses/:token",
+      "route": "/governance/import/courses/:token",
       "response": {
         "body": { "ok": true }
       }
     },
     {
-      "route": "/import/:token",
+      "route": "/governance/import/:token",
       "response": {
         "body": {
           "courses": [

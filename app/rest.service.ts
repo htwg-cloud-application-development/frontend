@@ -22,14 +22,14 @@ export class RestService {
     }
 
     login(username: String, password: String): any {
-        return this.httpPost("/login", JSON.stringify({"username": username, "password": password}));
+        return this.httpPost("/governance/login", JSON.stringify({"username": username, "password": password}));
     }
 
     getUserCourses(token: String): any {
-        return this.httpGet("/import/" + token);
+        return this.httpGet("/governance/import/" + token);
     }
 
     sendImportCourses(token: String, body: Object) {
-        return this.httpPost("/import/courses/" + token, JSON.stringify(body));
+        return this.httpPost("/governance/import/courses/" + token, JSON.stringify(body));
     }
 }

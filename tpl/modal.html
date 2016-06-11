@@ -56,7 +56,14 @@
                                             }">
                                                 <td>{{violation.line}}</td>
                                                 <td>{{violation.column}}</td>
-                                                <td>{{violation.message}}</td>
+                                                <td>
+                                                    <span [ngSwitch]="violation.severity">
+                                                        <span *ngSwitchWhen="'error'" class="text-danger glyphicon glyphicon-alert" aria-hidden="true"></span>
+                                                        <span *ngSwitchWhen="'warning'" class="text-warning glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                                        <span *ngSwitchWhen="'info'" class="text-info glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                                                    </span>
+                                                    {{violation.message}}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

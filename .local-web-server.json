@@ -111,6 +111,20 @@
                             "column": "9",
                             "source": "com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck",
                             "message": "Package name 'uebung1' must match pattern '^[a-z]+(\\.[a-z][a-z0-9]*)*$'."
+                          },
+                          {
+                            "severity": "error",
+                            "line": "10",
+                            "column": "2",
+                            "source": "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck",
+                            "message": "Missing a Javadoc comment."
+                          },
+                          {
+                            "severity": "info",
+                            "line": "1337",
+                            "column": "42",
+                            "source": "com.puppycrawl.tools.checkstyle.checks.random.RandomCheck",
+                            "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                           }
                         ]
                       }

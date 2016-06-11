@@ -95,6 +95,31 @@
                 "numberOfWarnings": 1,
                 "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
                 "numberOfErrors": 48
+              },
+              "checkstyle": {
+                "numberOfIgnores": 0,
+                "totalExpendedTime": 76544,
+                "assignments": [
+                  {
+                    "uebung1": [
+                      {
+                        "filepath": "repositories\\cloud-app-testrep_1464617937290\\uebung1\\AutoAnonymClass.java",
+                        "errors": [
+                          {
+                            "severity": "warning",
+                            "line": "1",
+                            "column": "9",
+                            "source": "com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck",
+                            "message": "Package name 'uebung1' must match pattern '^[a-z]+(\\.[a-z][a-z0-9]*)*$'."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "numberOfWarnings": 2247,
+                "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
+                "numberOfErrors": 0
               }
             }
           ]

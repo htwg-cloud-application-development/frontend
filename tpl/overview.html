@@ -51,12 +51,16 @@
                         <thead>
                         <tr>
                             <th class="text-center" rowspan="2">Group</th>
+                            <th class="text-center" colspan="3">Checkstyle</th>
                             <th class="text-center" colspan="3">PMD</th>
                         </tr>
                         <tr>
-                            <th class="text-center">Time</th>
                             <th class="text-center">Errors</th>
                             <th class="text-center">Warnings</th>
+                            <th class="text-center">Duration</th>
+                            <th class="text-center">Errors</th>
+                            <th class="text-center">Warnings</th>
+                            <th class="text-center">Duration</th>
                         </tr>
                         </thead>
                         <tbody *ngIf="currentCourse.courseId == course.courseId">
@@ -64,9 +68,12 @@
                                 <th>
                                     <a href="#" (click)="onGroupClick($event, group)">{{group.name}}</a>
                                 </th>
-                                <td class="text-right">{{group.pmd.totalExpendedTime / 1000 | number:'1.0-0'}} ms</td>
-                                <td class="text-right">{{group.pmd.numberOfWarnings}}</td>
+                                <td class="text-right">{{group.checkstyle.numberOfErrors}}</td>
+                                <td class="text-right">{{group.checkstyle.numberOfWarnings}}</td>
+                                <td class="text-right">{{group.checkstyle.totalExpendedTime / 1000 | number:'1.0-0'}} ms</td>
                                 <td class="text-right">{{group.pmd.numberOfErrors}}</td>
+                                <td class="text-right">{{group.pmd.numberOfWarnings}}</td>
+                                <td class="text-right">{{group.pmd.totalExpendedTime / 1000 | number:'1.0-0'}} ms</td>
                             </tr>
                         </tbody>
                     </table>

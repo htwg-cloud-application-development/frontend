@@ -70,7 +70,7 @@
                                     <a href="#" (click)="onGroupClick($event, group)">{{group.name}}</a>
                                 </th>
                                 <td class="text-center">
-                                    <a href="#" (click)="onValidateGroup($event, group)" *ngIf="groupValidation[group.groupId] == null">
+                                    <a href="#" (click)="onValidateGroup($event, course, group)" *ngIf="groupValidation[group.groupId] == null">
                                         <span class="glyphicon glyphicon-play text-success" aria-hidden="true"></span>
                                     </a>
 

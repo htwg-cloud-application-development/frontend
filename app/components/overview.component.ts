@@ -44,8 +44,12 @@ export class OverviewComponent {
         }
     }
 
-    onValidateGroup(event: MouseEvent, group) {
+    onValidateGroup(event: MouseEvent, course, group) {
         event.preventDefault();
         this.groupValidation[group.groupId] = true;
+        this.rest.validateGroup(course.courseId, group.groupId).subscribe(
+            (res: Response) => {},
+            (err: Response) => {}
+        );
     }
 }

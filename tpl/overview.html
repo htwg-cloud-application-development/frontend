@@ -42,7 +42,7 @@
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" #panel (click)="onToggleCollapse(course, panel)" href="#collapse-{{course.courseId}}" aria-expanded="false">
                         {{course.name}}
                     </a>
-                    - {{course.groups.length }} Groups
+                    <span class="pull-right">{{course.groups.length }} Groups</span>
                 </h4>
             </div>
             <div id="collapse-{{course.courseId}}" class="panel-collapse collapse" role="tabpanel">

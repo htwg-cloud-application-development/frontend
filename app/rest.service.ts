@@ -23,6 +23,10 @@ export class RestService {
         return this.httpGet('/governance/courses');
     }
 
+    getCourseDetails(courseId: number): any {
+        return this.httpGet('/governance/courses/' + courseId);
+    }
+
     login(username: String, password: String): any {
         return this.httpPost("/governance/login", JSON.stringify({"username": username, "password": password}));
     }

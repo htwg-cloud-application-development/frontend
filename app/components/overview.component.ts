@@ -20,6 +20,7 @@ export class OverviewComponent {
     courses: Array<Object>;
     filterCourse: String;
     currentCourse: Object = {"courseId": -1};
+    groupValidation = {};
 
     constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
         rest.getCourses().subscribe((res: Response) => {
@@ -41,5 +42,10 @@ export class OverviewComponent {
                 this.currentCourse = res.json();
             });
         }
+    }
+
+    onValidateGroup(event: MouseEvent, group) {
+        event.preventDefault();
+        this.groupValidation[group.groupId] = true;
     }
 }

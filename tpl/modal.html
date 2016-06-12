@@ -104,7 +104,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let violation of file.errors">
+                                            <tr *ngFor="let violation of file.errors" class="priority-{{violation.priority}}">
                                                 <td>
                                                     <span class="text-nowrap"><strong>Line:</strong> {{violation.lineBegin}}</span><br />
                                                     <span class="text-nowrap"><strong>Column:</strong> {{violation.columnBegin}}</span>

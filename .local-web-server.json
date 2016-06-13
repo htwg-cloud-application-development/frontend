@@ -153,6 +153,12 @@
           ]
         }
       }
+    },
+    {
+      "route": "/validator/courses/:id1/groups/:id2/validate",
+      "response": {
+        "body": {}
+      }
     }
   ]
 }

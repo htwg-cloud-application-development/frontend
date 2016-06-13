@@ -51,6 +51,7 @@
                         <thead>
                         <tr>
                             <th class="text-center" rowspan="2">Group</th>
+                            <th class="text-center" rowspan="2">Validate</th>
                             <th class="text-center" colspan="3">Checkstyle</th>
                             <th class="text-center" colspan="3">PMD</th>
                         </tr>
@@ -68,6 +69,13 @@
                                 <th>
                                     <a href="#" (click)="onGroupClick($event, group)">{{group.repository}}</a>
                                 </th>
+                                <td class="text-center">
+                                    <a href="#" (click)="onValidateGroup($event, course, group)" *ngIf="groupValidation[group.groupId] == null">
+                                        <span class="glyphicon glyphicon-play text-success" aria-hidden="true"></span>
+                                    </a>
+
+                                    <span *ngIf="groupValidation[group.groupId] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
+                                </td>
                                 <td class="text-right">{{group.checkstyle.numberOfErrors}}</td>
                                 <td class="text-right">{{group.checkstyle.numberOfWarnings}}</td>
                                 <td class="text-right">{{group.checkstyle.totalExpendedTime / 1000 | number:'1.0-0'}} ms</td>

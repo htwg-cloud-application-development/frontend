@@ -4,6 +4,7 @@ import { DialogRef, ModalComponent } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap/index';
 
 import { ValuesPipe } from './values.pipe';
+import { KeysPipe } from './keys.pipe';
 
 export class ModalContext extends BSModalContext {
     constructor(public group) {
@@ -15,7 +16,7 @@ export class ModalContext extends BSModalContext {
 @Component({
     selector: 'modal-content',
     templateUrl: '/tpl/modal.html',
-    pipes: [ValuesPipe]
+    pipes: [ValuesPipe, KeysPipe]
 })
 export class ModalWindow implements ModalComponent<ModalContext> {
     context: ModalContext;

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Renderer, ViewContainerRef } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ConnectionBackend, Response } from '@angular/http';
 import { Modal, BS_MODAL_PROVIDERS, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 

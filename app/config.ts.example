@@ -1,3 +1,4 @@
 export const CONFIG = {
-    "rest_api": "http://rest.example.com"
+    "rest_api": "http://rest.example.com",
+    "mode": "dev"
 };

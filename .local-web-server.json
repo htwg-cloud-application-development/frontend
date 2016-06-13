@@ -40,13 +40,21 @@
       "response": {
         "body": [
           {
-            "courseId": 1001,
-            "name": "Grundlagen der Programmiertechnik 2016",
+            "id": "2069",
+            "shortname": "CLOUD",
+            "fullname": "Cloud Application Development (Master)",
+            "enrolledusercount": "8",
+            "idnumber": "",
+            "visible": "1",
+            "assignments": null,
             "groups": [
               {
-                "groupId": 1,
-                "name": "Gruppe1",
-                "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo"
+                "userid": "6426",
+                "attemptnumber": "0",
+                "timecreated": "1464595178",
+                "timemodified": "1464595184",
+                "status": "submitted",
+                "repository": "https://github.com/morph0815/cloud-app-testrepo"
               }
             ]
           }
@@ -57,13 +65,21 @@
       "route": "/governance/courses/:id",
       "response": {
         "body": {
-          "courseId": 1001,
-          "name": "Grundlagen der Programmiertechnik 2016",
+          "id": "2069",
+          "shortname": "CLOUD",
+          "fullname": "Cloud Application Development (Master)",
+          "enrolledusercount": "8",
+          "idnumber": "",
+          "visible": "1",
+          "assignments": null,
           "groups": [
             {
-              "groupId": 1,
-              "name": "Gruppe1",
-              "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
+              "userid": "6426",
+              "attemptnumber": "0",
+              "timecreated": "1464595178",
+              "timemodified": "1464595184",
+              "status": "submitted",
+              "repository": "https://github.com/morph0815/cloud-app-testrepo",
               "pmd": {
                 "numberOfIgnores": 0,
                 "totalExpendedTime": 90863,

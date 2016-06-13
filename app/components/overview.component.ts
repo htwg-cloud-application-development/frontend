@@ -19,7 +19,7 @@ export class OverviewComponent {
     @ViewChild('inputCourseFilter') inputElementRef;
     courses: Array<Object>;
     filterCourse: String;
-    currentCourse: Object = {"courseId": -1};
+    currentCourse: Object = {"id": -1};
 
     constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
         rest.getCourses().subscribe((res: Response) => {
@@ -37,7 +37,7 @@ export class OverviewComponent {
 
     onToggleCollapse(course: any, panel: any) {
         if (panel.getAttribute("aria-expanded") == "false") {
-            this.rest.getCourseDetails(course.courseId).subscribe((res: Response) => {
+            this.rest.getCourseDetails(course.id).subscribe((res: Response) => {
                 this.currentCourse = res.json();
             });
         }

@@ -9,7 +9,7 @@ export class CoursePipe {
         if (!items) {
             return;
         } else {
-            return items.filter(item => item.name.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0);
+            return items.filter(item => item.fullname.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0);
         }
     }
 }

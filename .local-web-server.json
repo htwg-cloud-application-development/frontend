@@ -59,7 +59,7 @@
           "fullname": "Cloud Application Development (Master)",
           "groups": [
             {
-              "userid": "6426",
+              "groupId": "6426",
               "repository": "https://github.com/morph0815/cloud-app-testrepo",
               "pmd": {
                 "numberOfIgnores": 0,
@@ -75,7 +75,7 @@
               }
             },
             {
-              "userid": "6427",
+              "groupId": "6427",
               "repository": "https://github.com/example/example1",
               "pmd": {
                 "numberOfIgnores": 0,
@@ -85,7 +85,7 @@
               }
             },
             {
-              "userid": "6427",
+              "groupId": "6427",
               "repository": "https://github.com/example/example2",
               "checkstyle": {
                 "numberOfIgnores": 0,

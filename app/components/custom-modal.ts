@@ -9,7 +9,10 @@ import { KeysPipe } from './keys.pipe';
 import { RestService } from '../rest.service';
 
 export class ModalContext extends BSModalContext {
-    constructor(public group, public pmd, public checkstyle) {
+    public pmd;
+    public checkstyle;
+
+    constructor(public group) {
         super();
         this.size = 'lg';
     }
@@ -33,7 +36,7 @@ export class ModalWindow implements ModalComponent<ModalContext> {
     }
 
     loadPmd(rest: RestService) {
-        rest.getPmdResult().subscribe(
+        rest.getPmdResult(this.context.group.groupId).subscribe(
             (res: Response) => {
                 this.context.pmd = res.json();
             },
@@ -47,7 +50,7 @@ export class ModalWindow implements ModalComponent<ModalContext> {
     }
 
     loadCheckstyle(rest: RestService) {
-        rest.getCheckstyleResult().subscribe(
+        rest.getCheckstyleResult(this.context.group.groupId).subscribe(
             (res: Response) => {
                 this.context.checkstyle = res.json();
             },

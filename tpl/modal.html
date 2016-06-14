@@ -6,13 +6,13 @@
 </div>
 <div class="modal-body">
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
+        <li role="presentation" class="active" *ngIf="context.group.checkstyle != null">
             <a href="#details-checkstyle" aria-controls="profile" role="tab" data-toggle="tab">
                 <strong>Checkstyle</strong>
                 ({{context.group.checkstyle.numberOfErrors + context.group.checkstyle.numberOfWarnings}} violations)
             </a>
         </li>
-        <li role="presentation">
+        <li role="presentation" *ngIf="context.group.pmd != null" [ngClass]="{active: context.group.checkstyle == null}">
             <a href="#details-pmd" aria-controls="home" role="tab" data-toggle="tab">
                 <strong>PMD</strong>
                 ({{context.group.pmd.numberOfErrors + context.group.pmd.numberOfWarnings}} violations)
@@ -21,7 +21,7 @@
     </ul>
 
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="details-checkstyle">
+        <div role="tabpanel" class="tab-pane active" id="details-checkstyle" *ngIf="context.group.checkstyle != null">
             <div class="panel-group" id="accordion-checkstyle" role="tablist" aria-multiselectable="true">
                 <div *ngFor="let assignment of context.group.checkstyle.assignments; let i = index">
 
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="details-pmd">
+        <div role="tabpanel" class="tab-pane" id="details-pmd" *ngIf="context.group.pmd != null" [ngClass]="{active: context.group.checkstyle == null}">
             <div class="panel-group" id="accordion-pmd" role="tablist" aria-multiselectable="true">
 
                 <div *ngFor="let assignment of context.group.pmd.assignments; let i = index">

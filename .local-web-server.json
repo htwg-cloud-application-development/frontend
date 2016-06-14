@@ -43,19 +43,8 @@
             "id": "2069",
             "shortname": "CLOUD",
             "fullname": "Cloud Application Development (Master)",
-            "enrolledusercount": "8",
-            "idnumber": "",
-            "visible": "1",
-            "assignments": null,
             "groups": [
-              {
-                "userid": "6426",
-                "attemptnumber": "0",
-                "timecreated": "1464595178",
-                "timemodified": "1464595184",
-                "status": "submitted",
-                "repository": "https://github.com/morph0815/cloud-app-testrepo"
-              }
+              {}, {}, {}
             ]
           }
         ]
@@ -68,85 +57,40 @@
           "id": "2069",
           "shortname": "CLOUD",
           "fullname": "Cloud Application Development (Master)",
-          "enrolledusercount": "8",
-          "idnumber": "",
-          "visible": "1",
-          "assignments": null,
           "groups": [
             {
               "userid": "6426",
-              "attemptnumber": "0",
-              "timecreated": "1464595178",
-              "timemodified": "1464595184",
-              "status": "submitted",
               "repository": "https://github.com/morph0815/cloud-app-testrepo",
               "pmd": {
                 "numberOfIgnores": 0,
                 "totalExpendedTime": 90863,
-                "assignments": [
-                  {
-                    "uebung1": [
-                      {
-                        "filepath": "repositories\\cloud-app-testrep_1465196229797\\uebung1\\Main.java",
-                        "errors": [
-                          {
-                            "columnEnd": "1",
-                            "package": "uebung1",
-                            "lineBegin": "3",
-                            "ruleset": "Design",
-                            "rule": "UseUtilityClass",
-                            "columnBegin": "19",
-                            "priority": "3",
-                            "message": "\nAll methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.\n",
-                            "lineEnd": "31",
-                            "class": "Main"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
                 "numberOfWarnings": 1,
-                "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
                 "numberOfErrors": 48
               },
               "checkstyle": {
                 "numberOfIgnores": 0,
                 "totalExpendedTime": 76544,
-                "assignments": [
-                  {
-                    "uebung1": [
-                      {
-                        "filepath": "repositories\\cloud-app-testrep_1464617937290\\uebung1\\AutoAnonymClass.java",
-                        "errors": [
-                          {
-                            "severity": "warning",
-                            "line": "1",
-                            "column": "9",
-                            "source": "com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck",
-                            "message": "Package name 'uebung1' must match pattern '^[a-z]+(\\.[a-z][a-z0-9]*)*$'."
-                          },
-                          {
-                            "severity": "error",
-                            "line": "10",
-                            "column": "2",
-                            "source": "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck",
-                            "message": "Missing a Javadoc comment."
-                          },
-                          {
-                            "severity": "info",
-                            "line": "1337",
-                            "column": "42",
-                            "source": "com.puppycrawl.tools.checkstyle.checks.random.RandomCheck",
-                            "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
                 "numberOfWarnings": 2247,
-                "repositoryUrl": "https://github.com/morph0815/cloud-app-testrepo",
+                "numberOfErrors": 0
+              }
+            },
+            {
+              "userid": "6427",
+              "repository": "https://github.com/example/example1",
+              "pmd": {
+                "numberOfIgnores": 0,
+                "totalExpendedTime": 90863,
+                "numberOfWarnings": 1,
+                "numberOfErrors": 48
+              }
+            },
+            {
+              "userid": "6427",
+              "repository": "https://github.com/example/example2",
+              "checkstyle": {
+                "numberOfIgnores": 0,
+                "totalExpendedTime": 76544,
+                "numberOfWarnings": 2247,
                 "numberOfErrors": 0
               }
             }

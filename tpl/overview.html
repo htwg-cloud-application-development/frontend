@@ -69,7 +69,12 @@
                         <tbody>
                             <tr *ngFor="let group of course.groups">
                                 <th>
-                                    <a href="#" (click)="onGroupClick($event, group)">{{group.repository}}</a>
+                                    <template [ngIf]="group.pmd != null || group.checkstyle != null">
+                                        <a href="#" (click)="onGroupClick($event, group)">{{group.repository}}</a>
+                                    </template>
+                                    <template [ngIf]="group.pmd == null && group.checkstyle == null">
+                                        {{group.repository}}
+                                    </template>
                                 </th>
                                 <td class="text-center">
                                     <a href="#" (click)="onValidateGroup($event, course, group)" *ngIf="groupValidation[group.userId] == null">

@@ -36,7 +36,7 @@ export class ModalWindow implements ModalComponent<ModalContext> {
     }
 
     loadPmd(rest: RestService) {
-        rest.getPmdResult(this.context.group.groupId).subscribe(
+        rest.getPmdResult(this.context.group.userId).subscribe(
             (res: Response) => {
                 this.context.pmd = res.json();
             },
@@ -50,7 +50,7 @@ export class ModalWindow implements ModalComponent<ModalContext> {
     }
 
     loadCheckstyle(rest: RestService) {
-        rest.getCheckstyleResult(this.context.group.groupId).subscribe(
+        rest.getCheckstyleResult(this.context.group.userId).subscribe(
             (res: Response) => {
                 this.context.checkstyle = res.json();
             },

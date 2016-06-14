@@ -19,7 +19,6 @@ export class OverviewComponent {
     @ViewChild('inputCourseFilter') inputElementRef;
     courses: Array<Object>;
     filterCourse: String;
-    currentCourse: Object = {"id": -1};
     groupValidation = {};
 
     constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
@@ -36,18 +35,10 @@ export class OverviewComponent {
         this.modal.open(ModalWindow, new ModalContext(group));
     }
 
-    onToggleCollapse(course: any, panel: any) {
-        if (panel.getAttribute("aria-expanded") == "false") {
-            this.rest.getCourseDetails(course.id).subscribe((res: Response) => {
-                this.currentCourse = res.json();
-            });
-        }
-    }
-
     onValidateGroup(event: MouseEvent, course, group) {
         event.preventDefault();
-        this.groupValidation[group.groupId] = true;
-        this.rest.validateGroup(course.courseId, group.groupId).subscribe(
+        this.groupValidation[group.userId] = true;
+        this.rest.validateGroup(course.id, group.userId).subscribe(
             (res: Response) => {},
             (err: Response) => {}
         );

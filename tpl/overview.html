@@ -39,7 +39,7 @@
         <div *ngFor="let course of courses | courseFilter:filterCourse" class="panel panel-primary">
             <div class="panel-heading" role="tab">
                 <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" #panel (click)="onToggleCollapse(course, panel)" href="#collapse-{{course.id}}" aria-expanded="false">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{course.id}}" aria-expanded="false">
                         {{course.shortname}} - {{course.fullname}}
                     </a>
                     <template [ngIf]="course.groups != null">
@@ -66,17 +66,17 @@
                             <th class="text-center">Duration</th>
                         </tr>
                         </thead>
-                        <tbody *ngIf="currentCourse.id == course.id">
-                            <tr *ngFor="let group of currentCourse.groups">
+                        <tbody>
+                            <tr *ngFor="let group of course.groups">
                                 <th>
                                     <a href="#" (click)="onGroupClick($event, group)">{{group.repository}}</a>
                                 </th>
                                 <td class="text-center">
-                                    <a href="#" (click)="onValidateGroup($event, course, group)" *ngIf="groupValidation[group.groupId] == null">
+                                    <a href="#" (click)="onValidateGroup($event, course, group)" *ngIf="groupValidation[group.userId] == null">
                                         <span class="glyphicon glyphicon-play text-success" aria-hidden="true"></span>
                                     </a>
 
-                                    <span *ngIf="groupValidation[group.groupId] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
+                                    <span *ngIf="groupValidation[group.userId] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
                                 </td>
 
                                 <template [ngIf]="group.checkstyle != null">

@@ -35,10 +35,10 @@ export class OverviewComponent {
         this.modal.open(ModalWindow, new ModalContext(group));
     }
 
-    onValidateGroup(event: MouseEvent, course, group) {
+    onValidateGroup(event: MouseEvent, group) {
         event.preventDefault();
         this.groupValidation[group.userId] = true;
-        this.rest.validateGroup(course.id, group.userId).subscribe(
+        this.rest.validateGroup(group.userId).subscribe(
             (res: Response) => {},
             (err: Response) => {}
         );

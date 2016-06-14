@@ -27,8 +27,8 @@ export class RestService {
         return this.httpGet('/governance/courses/' + courseId);
     }
 
-    validateGroup(courseId: number, groupId: number): any {
-        return this.httpPost('/validator/courses/' + courseId + '/groups/' + groupId + '/validate', JSON.stringify({}));
+    validateGroup(groupId: number): any {
+        return this.httpPost('/validator/groups/' + groupId + '/validate', JSON.stringify({}));
     }
 
     getPmdResult(groupId: number): any {

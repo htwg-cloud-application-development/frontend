@@ -44,58 +44,57 @@
             "shortname": "CLOUD",
             "fullname": "Cloud Application Development (Master)",
             "groups": [
-              {}, {}, {}
+              {
+                "userId": "6426",
+                "repository": "https://github.com/morph0815/cloud-app-testrepo",
+                "pmd": {
+                  "numberOfIgnores": 0,
+                  "totalExpendedTime": 90863,
+                  "numberOfWarnings": 1,
+                  "numberOfErrors": 48
+                },
+                "checkstyle": {
+                  "numberOfIgnores": 0,
+                  "totalExpendedTime": 76544,
+                  "numberOfWarnings": 2247,
+                  "numberOfErrors": 0
+                }
+              },
+              {
+                "userId": "6427",
+                "repository": "https://github.com/example/example1",
+                "pmd": {
+                  "numberOfIgnores": 0,
+                  "totalExpendedTime": 90863,
+                  "numberOfWarnings": 1,
+                  "numberOfErrors": 48
+                }
+              },
+              {
+                "userId": "6428",
+                "repository": "https://github.com/example/example2",
+                "checkstyle": {
+                  "numberOfIgnores": 0,
+                  "totalExpendedTime": 76544,
+                  "numberOfWarnings": 2247,
+                  "numberOfErrors": 0
+                }
+              },
+              {
+                "userId": "6429",
+                "repository": "https://github.com/example/example3",
+                "checkstyle": null,
+                "pmd": null
+              }
             ]
+          },
+          {
+            "id": "713",
+            "shortname": "SE-AIN",
+            "fullname": "Software Engineering",
+            "groups": null
           }
         ]
-      }
-    },
-    {
-      "route": "/governance/courses/:id",
-      "response": {
-        "body": {
-          "id": "2069",
-          "shortname": "CLOUD",
-          "fullname": "Cloud Application Development (Master)",
-          "groups": [
-            {
-              "groupId": "6426",
-              "repository": "https://github.com/morph0815/cloud-app-testrepo",
-              "pmd": {
-                "numberOfIgnores": 0,
-                "totalExpendedTime": 90863,
-                "numberOfWarnings": 1,
-                "numberOfErrors": 48
-              },
-              "checkstyle": {
-                "numberOfIgnores": 0,
-                "totalExpendedTime": 76544,
-                "numberOfWarnings": 2247,
-                "numberOfErrors": 0
-              }
-            },
-            {
-              "groupId": "6427",
-              "repository": "https://github.com/example/example1",
-              "pmd": {
-                "numberOfIgnores": 0,
-                "totalExpendedTime": 90863,
-                "numberOfWarnings": 1,
-                "numberOfErrors": 48
-              }
-            },
-            {
-              "groupId": "6427",
-              "repository": "https://github.com/example/example2",
-              "checkstyle": {
-                "numberOfIgnores": 0,
-                "totalExpendedTime": 76544,
-                "numberOfWarnings": 2247,
-                "numberOfErrors": 0
-              }
-            }
-          ]
-        }
       }
     },
     {

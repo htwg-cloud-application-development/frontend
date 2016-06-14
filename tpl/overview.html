@@ -42,7 +42,9 @@
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" #panel (click)="onToggleCollapse(course, panel)" href="#collapse-{{course.id}}" aria-expanded="false">
                         {{course.shortname}} - {{course.fullname}}
                     </a>
-                    <span class="pull-right">{{course.groups.length}} Groups</span>
+                    <template [ngIf]="course.groups != null">
+                        <span class="pull-right">{{course.groups.length}} Groups</span>
+                    </template>
                 </h4>
             </div>
             <div id="collapse-{{course.id}}" class="panel-collapse collapse" role="tabpanel">

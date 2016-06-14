@@ -23,7 +23,12 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="details-checkstyle" *ngIf="context.group.checkstyle != null">
             <div class="panel-group" id="accordion-checkstyle" role="tablist" aria-multiselectable="true">
-                <div *ngFor="let assignment of context.group.checkstyle.assignments; let i = index">
+
+                <div [hidden]="!loaderCheckstyle" class="loader text-center">
+                    <i class="glyphicon glyphicon-refresh gly-spin"></i>
+                </div>
+                <template [ngIf]="!loaderCheckstyle">
+                    <div *ngFor="let assignment of context.checkstyle.assignments; let i = index">
 
                     <div *ngFor="let key of assignment | keys">
                         <h4>{{key}}</h4>
@@ -74,12 +79,18 @@
                     </div>
 
                 </div>
+                </template>
+
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="details-pmd" *ngIf="context.group.pmd != null" [ngClass]="{active: context.group.checkstyle == null}">
             <div class="panel-group" id="accordion-pmd" role="tablist" aria-multiselectable="true">
 
-                <div *ngFor="let assignment of context.group.pmd.assignments; let i = index">
+                <div [hidden]="!loaderPmd" class="loader text-center">
+                    <i class="glyphicon glyphicon-refresh gly-spin"></i>
+                </div>
+                <template [ngIf]="!loaderPmd">
+                    <div *ngFor="let assignment of context.pmd.assignments; let i = index">
                     <div *ngFor="let key of assignment | keys">
                         <h4>{{key}}</h4>
                         <div *ngFor="let file of assignment[key]; let j = index" class="panel panel-primary">
@@ -125,6 +136,7 @@
                         </div>
                     </div>
                 </div>
+                </template>
 
             </div>
         </div>

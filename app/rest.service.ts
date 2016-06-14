@@ -31,6 +31,14 @@ export class RestService {
         return this.httpPost('/validator/courses/' + courseId + '/groups/' + groupId + '/validate', JSON.stringify({}));
     }
 
+    getPmdResult(groupId: number): any {
+        return this.httpGet('/validator/groups/' + groupId + '/pmd/last-result');
+    }
+
+    getCheckstyleResult(groupId: number): any {
+        return this.httpGet('/validator/groups/' + groupId + '/checkstyle/last-result');
+    }
+
     login(username: String, password: String): any {
         return this.httpPost("/governance/login", JSON.stringify({"username": username, "password": password}));
     }

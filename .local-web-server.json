@@ -103,6 +103,83 @@
       "response": {
         "body": {}
       }
+    },
+    {
+      "route": "/validator/groups/:id/checkstyle/last-result",
+      "response": {
+        "body": {
+          "numberOfIgnores": 0,
+          "totalExpendedTime": 76544,
+          "assignments": [
+            {
+              "uebung1": [
+                {
+                  "filepath": "repositories\\cloud-app-testrep_1464617937290\\uebung1\\AutoAnonymClass.java",
+                  "errors": [
+                    {
+                      "severity": "warning",
+                      "line": "1",
+                      "column": "9",
+                      "source": "com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck",
+                      "message": "Package name 'uebung1' must match pattern '^[a-z]+(\\.[a-z][a-z0-9]*)*$'."
+                    },
+                    {
+                      "severity": "error",
+                      "line": "10",
+                      "column": "2",
+                      "source": "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck",
+                      "message": "Missing a Javadoc comment."
+                    },
+                    {
+                      "severity": "info",
+                      "line": "1337",
+                      "column": "42",
+                      "source": "com.puppycrawl.tools.checkstyle.checks.random.RandomCheck",
+                      "message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "numberOfWarnings": 2247,
+          "numberOfErrors": 0
+        }
+      }
+    },
+    {
+      "route": "/validator/groups/:id/pmd/last-result",
+      "response": {
+        "body": {
+          "numberOfIgnores": 0,
+          "totalExpendedTime": 90863,
+          "assignments": [
+            {
+              "uebung1": [
+                {
+                  "filepath": "repositories\\cloud-app-testrep_1465196229797\\uebung1\\Main.java",
+                  "errors": [
+                    {
+                      "columnEnd": "1",
+                      "package": "uebung1",
+                      "lineBegin": "3",
+                      "ruleset": "Design",
+                      "rule": "UseUtilityClass",
+                      "columnBegin": "19",
+                      "priority": "3",
+                      "message": "\nAll methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.\n",
+                      "lineEnd": "31",
+                      "class": "Main"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "numberOfWarnings": 1,
+          "numberOfErrors": 48
+        }
+      }
     }
   ]
 }

@@ -54,16 +54,14 @@
                         <tr>
                             <th class="text-center" rowspan="2">Group</th>
                             <th class="text-center" rowspan="2">Validate</th>
-                            <th class="text-center" colspan="3">Checkstyle</th>
-                            <th class="text-center" colspan="3">PMD</th>
+                            <th class="text-center" colspan="2">Checkstyle</th>
+                            <th class="text-center" colspan="2">PMD</th>
                         </tr>
                         <tr>
                             <th class="text-center">Errors</th>
                             <th class="text-center">Warnings</th>
-                            <th class="text-center">Duration</th>
                             <th class="text-center">Errors</th>
                             <th class="text-center">Warnings</th>
-                            <th class="text-center">Duration</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -87,10 +85,8 @@
                                 <template [ngIf]="group.checkstyle != null">
                                     <td class="text-right">{{group.checkstyle.numberOfErrors}}</td>
                                     <td class="text-right">{{group.checkstyle.numberOfWarnings}}</td>
-                                    <td class="text-right">{{group.checkstyle.totalExpendedTime / 1000 | number:'1.0-0'}} ms</td>
                                 </template>
                                 <template [ngIf]="group.checkstyle == null">
-                                    <td class="text-right">-</td>
                                     <td class="text-right">-</td>
                                     <td class="text-right">-</td>
                                 </template>
@@ -98,10 +94,8 @@
                                 <template [ngIf]="group.pmd != null">
                                     <td class="text-right">{{group.pmd.numberOfErrors}}</td>
                                     <td class="text-right">{{group.pmd.numberOfWarnings}}</td>
-                                    <td class="text-right">{{group.pmd.totalExpendedTime / 1000 | number:'1.0-0'}} ms</td>
                                 </template>
                                 <template [ngIf]="group.pmd == null">
-                                    <td class="text-right">-</td>
                                     <td class="text-right">-</td>
                                     <td class="text-right">-</td>
                                 </template>

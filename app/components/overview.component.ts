@@ -5,6 +5,7 @@ import { Modal, BS_MODAL_PROVIDERS, BSModalContext } from 'angular2-modal/plugin
 
 import { RestService } from '../rest.service';
 import { CoursePipe } from './course.pipe';
+import { ShortenRepoPipe } from './shorten-repo.pipe';
 import { ModalWindow, ModalContext } from './custom-modal';
 
 @Component({
@@ -13,7 +14,7 @@ import { ModalWindow, ModalContext } from './custom-modal';
     directives: [ROUTER_DIRECTIVES],
     providers: [RestService, ConnectionBackend],
     viewProviders: [ ...BS_MODAL_PROVIDERS ],
-    pipes: [CoursePipe]
+    pipes: [CoursePipe, ShortenRepoPipe]
 })
 export class OverviewComponent {
     @ViewChild('inputCourseFilter') inputElementRef;

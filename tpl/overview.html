@@ -68,10 +68,10 @@
                             <tr *ngFor="let group of course.groups">
                                 <th>
                                     <template [ngIf]="group.pmd != null || group.checkstyle != null">
-                                        <a href="#" (click)="onGroupClick($event, group)">{{group.repository}}</a>
+                                        <a href="#" (click)="onGroupClick($event, group)">{{group.repository | shortenRepo}}</a>
                                     </template>
                                     <template [ngIf]="group.pmd == null && group.checkstyle == null">
-                                        {{group.repository}}
+                                        {{group.repository | shortenRepo}}
                                     </template>
                                 </th>
                                 <td class="text-center">

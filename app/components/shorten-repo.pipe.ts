@@ -5,7 +5,7 @@ import { Pipe } from '@angular/core';
     pure: false
 })
 export class ShortenRepoPipe {
-    transform(value: string): any[] {
+    transform(value: string): string {
         var array = value.split('/');
         return (array.length > 2) ? array.slice(-2).join('/') : value;
     }

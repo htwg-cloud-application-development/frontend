@@ -8,6 +8,8 @@ import { CoursePipe } from './course.pipe';
 import { ShortenRepoPipe } from './shorten-repo.pipe';
 import { ModalWindow, ModalContext } from './custom-modal';
 
+declare var $:any;
+
 @Component({
     selector: 'cloud-app',
     templateUrl: '/tpl/overview.html',
@@ -43,5 +45,11 @@ export class OverviewComponent {
             (res: Response) => {},
             (err: Response) => {}
         );
+    }
+
+    public ngAfterViewChecked(): void {
+        if ($('[data-toggle="popover"]').length > 0) {
+            $('[data-toggle="popover"]').popover();
+        }
     }
 }

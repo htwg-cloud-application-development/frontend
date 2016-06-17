@@ -54,14 +54,15 @@
                         <tr>
                             <th class="text-center" rowspan="2">Group</th>
                             <th class="text-center" rowspan="2">Validate</th>
-                            <th class="text-center" colspan="2">Checkstyle</th>
-                            <th class="text-center" colspan="2">PMD</th>
+                            <th class="text-center hidden-xs" colspan="2">Checkstyle</th>
+                            <th class="text-center hidden-xs" colspan="2">PMD</th>
+                            <th class="text-center visible-xs">Violations</th>
                         </tr>
                         <tr>
-                            <th class="text-center">Errors</th>
-                            <th class="text-center">Warnings</th>
-                            <th class="text-center">Errors</th>
-                            <th class="text-center">Warnings</th>
+                            <th class="text-center hidden-xs">Errors</th>
+                            <th class="text-center hidden-xs">Warnings</th>
+                            <th class="text-center hidden-xs">Errors</th>
+                            <th class="text-center hidden-xs">Warnings</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -82,23 +83,74 @@
                                     <span *ngIf="groupValidation[group.userId] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
                                 </td>
 
-                                <template [ngIf]="group.checkstyle != null">
-                                    <td class="text-right">{{group.checkstyle.numberOfErrors}}</td>
-                                    <td class="text-right">{{group.checkstyle.numberOfWarnings}}</td>
-                                </template>
-                                <template [ngIf]="group.checkstyle == null">
-                                    <td class="text-right">-</td>
-                                    <td class="text-right">-</td>
-                                </template>
+                                <td class="text-right hidden-xs">
+                                    <template [ngIf]="group.checkstyle != null">{{group.checkstyle.numberOfErrors}}</template>
+                                    <template [ngIf]="group.checkstyle == null">-</template>
+                                </td>
+                                <td class="text-right hidden-xs">
+                                    <template [ngIf]="group.checkstyle != null">{{group.checkstyle.numberOfWarnings}}</template>
+                                    <template [ngIf]="group.checkstyle == null">-</template>
+                                </td>
 
-                                <template [ngIf]="group.pmd != null">
-                                    <td class="text-right">{{group.pmd.numberOfErrors}}</td>
-                                    <td class="text-right">{{group.pmd.numberOfWarnings}}</td>
-                                </template>
-                                <template [ngIf]="group.pmd == null">
-                                    <td class="text-right">-</td>
-                                    <td class="text-right">-</td>
-                                </template>
+                                <td class="text-right hidden-xs">
+                                    <template [ngIf]="group.pmd != null">{{group.pmd.numberOfErrors}}</template>
+                                    <template [ngIf]="group.pmd == null">-</template>
+                                </td>
+                                <td class="text-right hidden-xs">
+                                    <template [ngIf]="group.pmd != null">{{group.pmd.numberOfWarnings}}</template>
+                                    <template [ngIf]="group.pmd == null">-</template>
+                                </td>
+
+                                <td class="text-center visible-xs">
+                                    <template [ngIf]="group.checkstyle != null && group.pmd == null">
+                                        <template [ngIf]="group.checkstyle.numberOfErrors > 0">
+                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfErrors}} Errors">
+                                                <span class="glyphicon glyphicon-alert"></span>
+                                            </button>
+                                        </template>
+                                        <template [ngIf]="group.checkstyle.numberOfWarnings > 0">
+                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfWarnings}} Warnings">
+                                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                            </button>
+                                        </template>
+                                        <template [ngIf]="group.checkstyle.numberOfErrors == 0 && group.checkstyle.numberOfWarnings == 0">
+                                            -
+                                        </template>
+                                    </template>
+                                    <template [ngIf]="group.pmd != null && group.checkstyle == null">
+                                        <template [ngIf]="group.pmd.numberOfErrors > 0">
+                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.pmd.numberOfErrors}} Errors">
+                                                <span class="glyphicon glyphicon-alert"></span>
+                                            </button>
+                                        </template>
+                                        <template [ngIf]="group.pmd.numberOfWarnings > 0">
+                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.pmd.numberOfWarnings}} Warnings">
+                                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                            </button>
+                                        </template>
+                                        <template [ngIf]="group.pmd.numberOfErrors == 0 && group.pmd.numberOfWarnings == 0">
+                                            -
+                                        </template>
+                                    </template>
+                                    <template [ngIf]="group.checkstyle != null && group.pmd != null">
+                                        <template [ngIf]="group.checkstyle.numberOfErrors + group.pmd.numberOfErrors > 0">
+                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfErrors + group.pmd.numberOfErrors}} Errors">
+                                                <span class="glyphicon glyphicon-alert"></span>
+                                            </button>
+                                        </template>
+                                        <template [ngIf]="group.checkstyle.numberOfWarnings + group.pmd.numberOfWarnings > 0">
+                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfWarnings + group.pmd.numberOfWarnings}} Warnings">
+                                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                            </button>
+                                        </template>
+                                        <template [ngIf]="group.checkstyle.numberOfErrors + group.pmd.numberOfErrors == 0 && group.checkstyle.numberOfWarnings + group.pmd.numberOfWarnings == 0">
+                                            -
+                                        </template>
+                                    </template>
+                                    <template [ngIf]="group.checkstyle == null && group.pmd == null">
+                                        -
+                                    </template>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

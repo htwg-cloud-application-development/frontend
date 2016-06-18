@@ -4,6 +4,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ROUTER_PROVIDERS } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
+import { BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
 
 import { CONFIG } from './config';
 import { AppComponent } from './app.component';
@@ -18,5 +19,6 @@ bootstrap(<Type>AppComponent, [
     HTTP_PROVIDERS,
     provide(LocationStrategy, {useClass: <Type>HashLocationStrategy}),
     MODAL_BROWSER_PROVIDERS,
+    BS_MODAL_PROVIDERS,
     RestService
 ]);

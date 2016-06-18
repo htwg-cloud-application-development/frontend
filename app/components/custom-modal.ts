@@ -40,12 +40,8 @@ export class ModalWindow implements ModalComponent<ModalContext> {
             (res: Response) => {
                 this.context.pmd = res.json();
             },
-            (err: Response) => {
-
-            },
-            (done: Response) => {
-                this.loaderPmd = false;
-            }
+            (err: Response) => {},
+            () => { this.loaderPmd = false; }
         );
     }
 
@@ -54,12 +50,8 @@ export class ModalWindow implements ModalComponent<ModalContext> {
             (res: Response) => {
                 this.context.checkstyle = res.json();
             },
-            (err: Response) => {
-
-            },
-            (done: Response) => {
-                this.loaderCheckstyle = false;
-            }
+            (err: Response) => {},
+            () => { this.loaderCheckstyle = false; }
         );
     }
 

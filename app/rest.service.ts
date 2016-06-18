@@ -2,23 +2,43 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { CONFIG } from './config';
 
 @Injectable()
 export class RestService {
 
-    constructor(private http: Http) {}
+    constructor(private http: Http, private modal: Modal) {}
 
-    private httpGet(path: String): any {
-        return this.http.get(CONFIG.rest_api + path);
-    }
-
-    private httpPost(path: String, body: string, options?: RequestOptionsArgs): Observable<Response> {
-        var response = this.http.post(CONFIG.rest_api + path, body, this.createPostOptions());
+    private httpGet(path: string): Observable<Response> {
+        var response = this.http.get(this.getUrl(path));
         response.subscribe(
             (res: Response) => {},
-            (err: Response) => {},
+            (err: Response) => { this.handleError(path, err); },
+            () => {}
+        );
+        return response;
+    }
+
+    private getUrl(path: string): string {
+        return CONFIG.rest_api + path;
+    }
+
+    private handleError(path: string, res: Response): void {
+        var title = 'Error';
+        var message = 'Request to <strong>' + this.getUrl(path) + '</strong> has returned <strong>' + res.status + '</strong>.';
+        this.modal.alert()
+            .titleHtml('<h3 class="modal-title text-danger">' + title + '</h3>')
+            .body('<span class="text-danger">' + message + '</span>')
+            .open();
+    }
+
+    private httpPost(path: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
+        var response = this.http.post(this.getUrl(path), body, this.createPostOptions());
+        response.subscribe(
+            (res: Response) => {},
+            (err: Response) => { this.handleError(path, err); },
             () => {}
         );
         return response;
@@ -34,11 +54,11 @@ export class RestService {
         return headers;
     }
 
-    getCourses(): any {
+    getCourses(): Observable<Response> {
         return this.httpGet('/governance/courses');
     }
 
-    getCourseDetails(courseId: number): any {
+    getCourseDetails(courseId: number): Observable<Response> {
         return this.httpGet('/governance/courses/' + courseId);
     }
 
@@ -46,11 +66,11 @@ export class RestService {
         return this.httpPost('/validator/groups/' + groupId + '/validate', JSON.stringify({}));
     }
 
-    getPmdResult(groupId: number): any {
+    getPmdResult(groupId: number): Observable<Response> {
         return this.httpGet('/validator/groups/' + groupId + '/pmd/last-result');
     }
 
-    getCheckstyleResult(groupId: number): any {
+    getCheckstyleResult(groupId: number): Observable<Response> {
         return this.httpGet('/validator/groups/' + groupId + '/checkstyle/last-result');
     }
 
@@ -58,7 +78,7 @@ export class RestService {
         return this.httpPost("/governance/login", JSON.stringify({"username": username, "password": password}));
     }
 
-    getUserCourses(token: String): any {
+    getUserCourses(token: String): Observable<Response> {
         return this.httpGet("/governance/import/" + token);
     }
 

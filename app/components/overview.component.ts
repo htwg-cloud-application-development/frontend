@@ -1,7 +1,7 @@
 import { Component, ViewChild, Renderer, ViewContainerRef } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ConnectionBackend, Response } from '@angular/http';
-import { Modal, BS_MODAL_PROVIDERS, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { RestService } from '../rest.service';
 import { CoursePipe } from './course.pipe';
@@ -15,7 +15,6 @@ declare var $:any;
     templateUrl: '/tpl/overview.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [RestService, ConnectionBackend],
-    viewProviders: [ ...BS_MODAL_PROVIDERS ],
     pipes: [CoursePipe, ShortenRepoPipe]
 })
 export class OverviewComponent {
@@ -25,10 +24,13 @@ export class OverviewComponent {
     groupValidation = {};
 
     constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
-        rest.getCourses().subscribe((res: Response) => {
-            this.courses = res.json();
-            renderer.invokeElementMethod(this.inputElementRef.nativeElement, 'focus', []);
-        });
+        rest.getCourses().subscribe(
+            (res: Response) => {
+                this.courses = res.json();
+                renderer.invokeElementMethod(this.inputElementRef.nativeElement, 'focus', []);
+            },
+            (err: Response) => {}
+        );
 
         this.modal.defaultViewContainer = viewContainer;
     }

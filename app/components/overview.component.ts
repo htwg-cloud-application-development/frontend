@@ -43,7 +43,10 @@ export class OverviewComponent {
         this.groupValidation[group.userId] = true;
         this.rest.validateGroup(group.userId).subscribe(
             (res: Response) => {},
-            (err: Response) => {}
+            (err: Response) => {},
+            () => {
+                this.groupValidation[group.userId] = null;
+            }
         );
     }
 

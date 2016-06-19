@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { CONFIG } from './config';
@@ -12,11 +13,11 @@ export class RestService {
     constructor(private http: Http, private modal: Modal) {}
 
     private httpGet(path: string): Observable<Response> {
-        var response = this.http.get(this.getUrl(path));
+        var response = this.http.get(this.getUrl(path)).share();
         response.subscribe(
-            (res: Response) => {},
+            null,
             (err: Response) => { this.handleError(path, err); },
-            () => {}
+            null
         );
         return response;
     }
@@ -35,11 +36,11 @@ export class RestService {
     }
 
     private httpPost(path: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
-        var response = this.http.post(this.getUrl(path), body, this.createPostOptions());
+        var response = this.http.post(this.getUrl(path), body, this.createPostOptions()).share();
         response.subscribe(
-            (res: Response) => {},
+            null,
             (err: Response) => { this.handleError(path, err); },
-            () => {}
+            null
         );
         return response;
     }

@@ -22,6 +22,7 @@ export class OverviewComponent {
     courses: Array<Object>;
     filterCourse: String;
     groupValidation = {};
+    courseValidation = {};
 
     constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
         rest.getCourses().subscribe(
@@ -35,6 +36,12 @@ export class OverviewComponent {
         this.modal.defaultViewContainer = viewContainer;
     }
 
+    public ngAfterViewChecked(): void {
+        if ($('[data-toggle="popover"]').length > 0) {
+            $('[data-toggle="popover"]').popover();
+        }
+    }
+
     onGroupClick(event: MouseEvent, group) {
         event.preventDefault();
         this.modal.open(ModalWindow, new ModalContext(group));
@@ -42,16 +49,30 @@ export class OverviewComponent {
 
     onValidateGroup(event: MouseEvent, group) {
         event.preventDefault();
-        this.groupValidation[group.userId] = true;
+        this.setGroupValidation(group, true);
         this.rest.validateGroup(group.userId).subscribe(
-            (res: Response) => { this.groupValidation[group.userId] = null; },
-            (err: Response) => { this.groupValidation[group.userId] = null; }
+            (res: Response) => { this.setGroupValidation(group, null); },
+            (err: Response) => { this.setGroupValidation(group, null); }
         );
     }
 
-    public ngAfterViewChecked(): void {
-        if ($('[data-toggle="popover"]').length > 0) {
-            $('[data-toggle="popover"]').popover();
+    setGroupValidation(group, value) {
+        this.groupValidation[group.userId] = value;
+    }
+
+    onValidateCourse(event: MouseEvent, course) {
+        event.preventDefault();
+        this.setCourseValidation(course, true);
+        this.rest.validateCourse(course.id).subscribe(
+            (res: Response) => { this.setCourseValidation(course, null); },
+            (err: Response) => { this.setCourseValidation(course, null); }
+        );
+    }
+
+    setCourseValidation(course, value) {
+        this.courseValidation[course.id] = value;
+        for (var group of course.groups) {
+            this.groupValidation[group.userId] = value;
         }
     }
 }

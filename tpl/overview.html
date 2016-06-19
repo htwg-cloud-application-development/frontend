@@ -43,7 +43,16 @@
                         {{course.shortname}} - {{course.fullname}}
                     </a>
                     <template [ngIf]="course.groups != null">
-                        <span class="pull-right">{{course.groups.length}} Groups</span>
+                        <span class="pull-right">
+                            {{course.groups.length}} Groups
+
+                            <span class="text-pad-left">
+                                <a href="#" (click)="onValidateCourse($event, course)" *ngIf="courseValidation[course.id] == null">
+                                    <span class="glyphicon glyphicon-play text-success" aria-hidden="true"></span>
+                                </a>
+                                <span *ngIf="courseValidation[course.id] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
+                            </span>
+                        </span>
                     </template>
                 </h4>
             </div>

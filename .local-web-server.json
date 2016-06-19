@@ -179,6 +179,12 @@
           "numberOfErrors": 48
         }
       }
+    },
+    {
+      "route": "/validator/courses/:id/validate",
+      "response": {
+        "body": {}
+      }
     }
   ]
 }

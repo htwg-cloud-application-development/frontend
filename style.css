@@ -164,3 +164,7 @@ body {
 .table-hover > tbody > tr.priority-5:hover > td {
     background-color: #e8e8e8;
 }
+
+.text-pad-left {
+    padding-left: 10px;
+}

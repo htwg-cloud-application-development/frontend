@@ -38,20 +38,24 @@ export class ModalWindow implements ModalComponent<ModalContext> {
     loadPmd(rest: RestService) {
         rest.getPmdResult(this.context.group.userId).subscribe(
             (res: Response) => {
+                this.loaderPmd = false;
                 this.context.pmd = res.json();
             },
-            (err: Response) => {},
-            () => { this.loaderPmd = false; }
+            (err: Response) => {
+                this.loaderPmd = false;
+            }
         );
     }
 
     loadCheckstyle(rest: RestService) {
         rest.getCheckstyleResult(this.context.group.userId).subscribe(
             (res: Response) => {
+                this.loaderCheckstyle = false;
                 this.context.checkstyle = res.json();
             },
-            (err: Response) => {},
-            () => { this.loaderCheckstyle = false; }
+            (err: Response) => {
+                this.loaderCheckstyle = false;
+            }
         );
     }
 

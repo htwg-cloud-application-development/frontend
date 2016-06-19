@@ -44,11 +44,8 @@ export class OverviewComponent {
         event.preventDefault();
         this.groupValidation[group.userId] = true;
         this.rest.validateGroup(group.userId).subscribe(
-            (res: Response) => {},
-            (err: Response) => {},
-            () => {
-                this.groupValidation[group.userId] = null;
-            }
+            (res: Response) => { this.groupValidation[group.userId] = null; },
+            (err: Response) => { this.groupValidation[group.userId] = null; }
         );
     }
 

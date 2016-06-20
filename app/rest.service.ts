@@ -68,7 +68,7 @@ export class RestService {
     }
 
     validateCourse(courseId: number): Observable<Response> {
-        return this.httpPost('/validator/courses/' + courseId + '/validates', JSON.stringify({}));
+        return this.httpPost('/validator/courses/' + courseId + '/validate', JSON.stringify({}));
     }
 
     getPmdResult(groupId: number): Observable<Response> {

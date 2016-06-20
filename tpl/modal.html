@@ -27,7 +27,7 @@
                 <div [hidden]="!loaderCheckstyle" class="loader text-center">
                     <i class="glyphicon glyphicon-refresh gly-spin"></i>
                 </div>
-                <template [ngIf]="!loaderCheckstyle">
+                <template [ngIf]="!loaderCheckstyle && context.checkstyle != null">
                     <div *ngFor="let assignment of context.checkstyle.assignments; let i = index">
 
                     <div *ngFor="let key of assignment | keys">
@@ -89,7 +89,7 @@
                 <div [hidden]="!loaderPmd" class="loader text-center">
                     <i class="glyphicon glyphicon-refresh gly-spin"></i>
                 </div>
-                <template [ngIf]="!loaderPmd">
+                <template [ngIf]="!loaderPmd && context.pmd != null">
                     <div *ngFor="let assignment of context.pmd.assignments; let i = index">
                     <div *ngFor="let key of assignment | keys">
                         <h4>{{key}}</h4>

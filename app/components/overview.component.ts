@@ -7,6 +7,7 @@ import { RestService } from '../rest.service';
 import { CoursePipe } from './course.pipe';
 import { ShortenRepoPipe } from './shorten-repo.pipe';
 import { ModalWindow, ModalContext } from './custom-modal';
+import { CourseModalWindow, CourseModalContext } from './validation-course.modal';
 
 declare var $:any;
 
@@ -62,17 +63,6 @@ export class OverviewComponent {
 
     onValidateCourse(event: MouseEvent, course) {
         event.preventDefault();
-        this.setCourseValidation(course, true);
-        this.rest.validateCourse(course.id).subscribe(
-            (res: Response) => { this.setCourseValidation(course, null); },
-            (err: Response) => { this.setCourseValidation(course, null); }
-        );
-    }
-
-    setCourseValidation(course, value) {
-        this.courseValidation[course.id] = value;
-        for (var group of course.groups) {
-            this.groupValidation[group.userId] = value;
-        }
+        this.modal.open(CourseModalWindow, new CourseModalContext(course, this.courseValidation, this.groupValidation));
     }
 }

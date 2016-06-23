@@ -185,6 +185,35 @@
       "response": {
         "body": {}
       }
+    },
+    {
+      "route": "/validator/courses/:id/validate/duplication",
+      "response": {
+        "body": {
+          "duplication": {
+            "totalExpendedTime": 29388,
+            "assignments": "",
+            "numberOfDuplications": 132,
+            "duplications": [
+              {
+                "duplication": {
+                  "codefragment": "public class ...",
+                  "duplicatedLines": 85,
+                  "tokens": 615,
+                  "filePaths": [
+                    {
+                      "filePath": "SomeRandomPathToClass.java"
+                    },
+                    {
+                      "filePath": "AnotherRandomPathToClass.java"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
     }
   ]
 }

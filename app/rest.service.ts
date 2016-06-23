@@ -71,6 +71,10 @@ export class RestService {
         return this.httpPost('/validator/courses/' + courseId + '/validate', JSON.stringify({}));
     }
 
+    validateDuplications(courseId: number): Observable<Response> {
+        return this.httpPost('/validator/courses/' + courseId + '/validate/duplication', JSON.stringify({}));
+    }
+
     getPmdResult(groupId: number): Observable<Response> {
         return this.httpGet('/validator/groups/' + groupId + '/pmd/last-result');
     }

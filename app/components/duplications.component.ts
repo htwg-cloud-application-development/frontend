@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavbarDirective } from './navbar.directive';
 import { DialogRef, ModalComponent } from 'angular2-modal';
 import { BSModalContext, Modal } from 'angular2-modal/plugins/bootstrap';
@@ -77,8 +77,7 @@ export class DuplicationsComponent {
     courses: Array<Object> = [];
     running = {};
 
-    constructor(private rest: RestService, private modal: Modal, viewContainer: ViewContainerRef) {
-        this.modal.defaultViewContainer = viewContainer;
+    constructor(private rest: RestService, private modal: Modal) {
         rest.getCourses().subscribe(
             (res: Response) => {
                 this.courses = res.json();

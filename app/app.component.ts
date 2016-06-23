@@ -1,5 +1,6 @@
-import { Component, Type } from '@angular/core';
+import { Component, Type, ViewContainerRef } from '@angular/core';
 import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { OverviewComponent } from './components/overview.component';
 import { ImportComponent } from './components/login.component';
@@ -12,7 +13,6 @@ import { DuplicationsComponent } from './components/duplications.component';
     directives: [ROUTER_DIRECTIVES],
     providers: [Location]
 })
-
 @Routes([
     { path: '/', component: <Type>OverviewComponent},
     { path: '/import', component: <Type>ImportComponent},
@@ -21,5 +21,7 @@ import { DuplicationsComponent } from './components/duplications.component';
 ])
 export class AppComponent {
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private modal: Modal, viewContainer: ViewContainerRef) {
+        modal.defaultViewContainer = viewContainer;
+    }
 }

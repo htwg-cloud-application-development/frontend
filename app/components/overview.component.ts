@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, Renderer } from '@angular/core';
 import { ConnectionBackend, Response } from '@angular/http';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
@@ -25,7 +25,7 @@ export class OverviewComponent {
     groupValidation = {};
     courseValidation = {};
 
-    constructor(private modal: Modal, renderer: Renderer, private rest: RestService, viewContainer: ViewContainerRef) {
+    constructor(private modal: Modal, renderer: Renderer, private rest: RestService) {
         rest.getCourses().subscribe(
             (res: Response) => {
                 this.courses = res.json();
@@ -33,8 +33,6 @@ export class OverviewComponent {
             },
             (err: Response) => {}
         );
-
-        this.modal.defaultViewContainer = viewContainer;
     }
 
     public ngAfterViewChecked(): void {

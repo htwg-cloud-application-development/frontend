@@ -1,5 +1,4 @@
 import { Component, ViewChild, Renderer, ViewContainerRef } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ConnectionBackend, Response } from '@angular/http';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
@@ -8,13 +7,14 @@ import { CoursePipe } from './course.pipe';
 import { ShortenRepoPipe } from './shorten-repo.pipe';
 import { ModalWindow, ModalContext } from './custom-modal';
 import { CourseModalWindow, CourseModalContext } from './validation-course.modal';
+import { HeaderDirective, EntriesDirective } from './navbar.directive';
 
 declare var $:any;
 
 @Component({
     selector: 'cloud-app',
     templateUrl: '/tpl/overview.html',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [HeaderDirective, EntriesDirective],
     providers: [RestService, ConnectionBackend],
     pipes: [CoursePipe, ShortenRepoPipe]
 })

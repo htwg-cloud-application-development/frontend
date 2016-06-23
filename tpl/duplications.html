@@ -38,10 +38,10 @@
                     <template [ngIf]="course.duplication != null">
                         <div *ngFor="let duplication of course.duplication.duplications" class="panel panel-primary">
                             <div class="panel-body">
-                                <pre>{{duplication.duplication.codefragment}}</pre>
                                 <ul>
                                     <li *ngFor="let filePath of duplication.duplication.filePaths">{{filePath.filePath}}</li>
                                 </ul>
+                                <pre>{{duplication.duplication.codefragment}}</pre>
                             </div>
                         </div>
                     </template>

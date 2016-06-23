@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { NavbarDirective } from './navbar.directive';
 
 @Component({
     selector: 'cloud-app',
     templateUrl: '/tpl/about.html',
-    directives: [ROUTER_DIRECTIVES]
+    directives: [NavbarDirective]
 })
 export class AboutComponent {
 }

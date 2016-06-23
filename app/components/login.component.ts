@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ConnectionBackend, Response } from '@angular/http';
 
+import { NavbarDirective } from './navbar.directive';
 import { RestService } from '../rest.service';
 
 @Component({
     selector: 'cloud-app',
     templateUrl: '/tpl/import.html',
     providers: [RestService, ConnectionBackend],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [NavbarDirective]
 })
 export class ImportComponent {
     model: Login;

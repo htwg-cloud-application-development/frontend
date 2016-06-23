@@ -29,11 +29,12 @@
     'platform-browser-dynamic',
     'router',
     'router-deprecated',
-    'upgrade'
+    'upgrade',
+    'forms'
   ];
   // Add package entries for angular packages
   ngPackageNames.forEach(function(pkgName) {
-    packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+    packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
   });
   var config = {
     map: map,

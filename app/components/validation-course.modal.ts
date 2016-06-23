@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { DialogRef, ModalComponent } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap/index';
 import { Response } from '@angular/http';
-import { NgForm } from '@angular/common';
 
 import { RestService } from '../rest.service';
 
@@ -25,7 +24,7 @@ export class CourseModalWindow implements ModalComponent<CourseModalContext> {
     loginError: boolean = false;
     showLoader: boolean = false;
 
-    constructor(public dialog: DialogRef<ModalContext>, private rest: RestService) {
+    constructor(public dialog: DialogRef<CourseModalContext>, private rest: RestService) {
         this.context = dialog.context;
     }
 

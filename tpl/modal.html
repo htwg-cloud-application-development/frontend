@@ -64,9 +64,9 @@
                                                 <td>{{violation.column}}</td>
                                                 <td>
                                                     <span [ngSwitch]="violation.severity">
-                                                        <span *ngSwitchWhen="'error'" class="text-danger glyphicon glyphicon-alert" aria-hidden="true"></span>
-                                                        <span *ngSwitchWhen="'warning'" class="text-warning glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                                                        <span *ngSwitchWhen="'info'" class="text-info glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                                                        <span *ngSwitchCase="'error'" class="text-danger glyphicon glyphicon-alert" aria-hidden="true"></span>
+                                                        <span *ngSwitchCase="'warning'" class="text-warning glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                                        <span *ngSwitchCase="'info'" class="text-info glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                                                     </span>
                                                     {{violation.message}}
                                                 </td>

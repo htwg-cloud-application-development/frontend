@@ -13,7 +13,7 @@ import { KeysPipe } from './keys.pipe';
 
 declare var $:any;
 
-export class ModalContext extends BSModalContext {
+class GroupModalContext extends BSModalContext {
     public pmd;
     public checkstyle;
 
@@ -25,16 +25,16 @@ export class ModalContext extends BSModalContext {
 
 @Component({
     selector: 'modal-content',
-    templateUrl: '/tpl/modal.html',
+    templateUrl: '/tpl/modal.group.html',
     providers: [RestService, ConnectionBackend],
     pipes: [ValuesPipe, KeysPipe]
 })
-export class ModalWindow implements ModalComponent<ModalContext> {
-    context: ModalContext;
+class GroupModalWindow implements ModalComponent<GroupModalContext> {
+    context: GroupModalContext;
     loaderCheckstyle = true;
     loaderPmd = true;
 
-    constructor(public dialog: DialogRef<ModalContext>, private rest: RestService) {
+    constructor(public dialog: DialogRef<GroupModalContext>, private rest: RestService) {
         this.context = dialog.context;
         this.loadPmd(rest);
         this.loadCheckstyle(rest);
@@ -62,14 +62,6 @@ export class ModalWindow implements ModalComponent<ModalContext> {
                 this.loaderCheckstyle = false;
             }
         );
-    }
-
-    beforeDismiss() {
-        return true;
-    }
-
-    beforeClose() {
-        return true;
     }
 
     onXClick() {
@@ -109,7 +101,7 @@ export class OverviewComponent {
 
     onGroupClick(event: MouseEvent, group) {
         event.preventDefault();
-        this.modal.open(ModalWindow, new ModalContext(group));
+        this.modal.open(GroupModalWindow, new GroupModalContext(group));
     }
 
     onValidateGroup(event: MouseEvent, group) {

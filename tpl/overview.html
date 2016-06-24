@@ -44,7 +44,17 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th class="text-center" rowspan="2">Group</th>
+                            <th class="text-center" rowspan="2">
+                                Group
+                                <form class="pull-right">
+                                    <div class="form-group">
+                                        <select class="form-control" (change)="onAssignmentChange($event, course)" name="filterAssignment">
+                                            <option value="">- Assignment -</option>
+                                            <option *ngFor="let assignment of getAssignments(course)" value="{{assignment}}">{{assignment}}</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </th>
                             <th class="text-center" rowspan="2">Validate</th>
                             <th class="text-center hidden-xs" colspan="2">Checkstyle</th>
                             <th class="text-center hidden-xs" colspan="2">PMD</th>
@@ -76,70 +86,70 @@
                                 </td>
 
                                 <td class="text-right hidden-xs">
-                                    <template [ngIf]="group.checkstyle != null">{{group.checkstyle.numberOfErrors}}</template>
-                                    <template [ngIf]="group.checkstyle == null">-</template>
+                                    <template [ngIf]="getCheckstyle(course, group) != null">{{getCheckstyle(course, group).numberOfErrors}}</template>
+                                    <template [ngIf]="getCheckstyle(course, group) == null">-</template>
                                 </td>
                                 <td class="text-right hidden-xs">
-                                    <template [ngIf]="group.checkstyle != null">{{group.checkstyle.numberOfWarnings}}</template>
-                                    <template [ngIf]="group.checkstyle == null">-</template>
+                                    <template [ngIf]="getCheckstyle(course, group) != null">{{getCheckstyle(course, group).numberOfWarnings}}</template>
+                                    <template [ngIf]="getCheckstyle(course, group) == null">-</template>
                                 </td>
 
                                 <td class="text-right hidden-xs">
-                                    <template [ngIf]="group.pmd != null">{{group.pmd.numberOfErrors}}</template>
-                                    <template [ngIf]="group.pmd == null">-</template>
+                                    <template [ngIf]="getPmd(course, group) != null">{{getPmd(course, group).numberOfErrors}}</template>
+                                    <template [ngIf]="getPmd(course, group) == null">-</template>
                                 </td>
                                 <td class="text-right hidden-xs">
-                                    <template [ngIf]="group.pmd != null">{{group.pmd.numberOfWarnings}}</template>
-                                    <template [ngIf]="group.pmd == null">-</template>
+                                    <template [ngIf]="getPmd(course, group) != null">{{getPmd(course, group).numberOfWarnings}}</template>
+                                    <template [ngIf]="getPmd(course, group) == null">-</template>
                                 </td>
 
                                 <td class="text-center visible-xs">
-                                    <template [ngIf]="group.checkstyle != null && group.pmd == null">
-                                        <template [ngIf]="group.checkstyle.numberOfErrors > 0">
-                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfErrors}} Errors">
+                                    <template [ngIf]="getCheckstyle(course, group) != null && getPmd(course, group) == null">
+                                        <template [ngIf]="getCheckstyle(course, group).numberOfErrors > 0">
+                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getCheckstyle(course, group).numberOfErrors}} Errors">
                                                 <span class="glyphicon glyphicon-alert"></span>
                                             </button>
                                         </template>
-                                        <template [ngIf]="group.checkstyle.numberOfWarnings > 0">
-                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfWarnings}} Warnings">
+                                        <template [ngIf]="getCheckstyle(course, group).numberOfWarnings > 0">
+                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getCheckstyle(course, group).numberOfWarnings}} Warnings">
                                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                                             </button>
                                         </template>
-                                        <template [ngIf]="group.checkstyle.numberOfErrors == 0 && group.checkstyle.numberOfWarnings == 0">
+                                        <template [ngIf]="getCheckstyle(course, group).numberOfErrors == 0 && getCheckstyle(course, group).numberOfWarnings == 0">
                                             -
                                         </template>
                                     </template>
-                                    <template [ngIf]="group.pmd != null && group.checkstyle == null">
-                                        <template [ngIf]="group.pmd.numberOfErrors > 0">
-                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.pmd.numberOfErrors}} Errors">
+                                    <template [ngIf]="getPmd(course, group) != null && getCheckstyle(course, group) == null">
+                                        <template [ngIf]="getPmd(course, group).numberOfErrors > 0">
+                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getPmd(course, group).numberOfErrors}} Errors">
                                                 <span class="glyphicon glyphicon-alert"></span>
                                             </button>
                                         </template>
-                                        <template [ngIf]="group.pmd.numberOfWarnings > 0">
-                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.pmd.numberOfWarnings}} Warnings">
+                                        <template [ngIf]="getPmd(course, group).numberOfWarnings > 0">
+                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getPmd(course, group).numberOfWarnings}} Warnings">
                                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                                             </button>
                                         </template>
-                                        <template [ngIf]="group.pmd.numberOfErrors == 0 && group.pmd.numberOfWarnings == 0">
+                                        <template [ngIf]="getPmd(course, group).numberOfErrors == 0 && getPmd(course, group).numberOfWarnings == 0">
                                             -
                                         </template>
                                     </template>
-                                    <template [ngIf]="group.checkstyle != null && group.pmd != null">
-                                        <template [ngIf]="group.checkstyle.numberOfErrors + group.pmd.numberOfErrors > 0">
-                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfErrors + group.pmd.numberOfErrors}} Errors">
+                                    <template [ngIf]="getCheckstyle(course, group) != null && getPmd(course, group) != null">
+                                        <template [ngIf]="getCheckstyle(course, group).numberOfErrors + getPmd(course, group).numberOfErrors > 0">
+                                            <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getCheckstyle(course, group).numberOfErrors + getPmd(course, group).numberOfErrors}} Errors">
                                                 <span class="glyphicon glyphicon-alert"></span>
                                             </button>
                                         </template>
-                                        <template [ngIf]="group.checkstyle.numberOfWarnings + group.pmd.numberOfWarnings > 0">
-                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{group.checkstyle.numberOfWarnings + group.pmd.numberOfWarnings}} Warnings">
+                                        <template [ngIf]="getCheckstyle(course, group).numberOfWarnings + getPmd(course, group).numberOfWarnings > 0">
+                                            <button type="button" class="btn btn-warning" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getCheckstyle(course, group).numberOfWarnings + getPmd(course, group).numberOfWarnings}} Warnings">
                                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                                             </button>
                                         </template>
-                                        <template [ngIf]="group.checkstyle.numberOfErrors + group.pmd.numberOfErrors == 0 && group.checkstyle.numberOfWarnings + group.pmd.numberOfWarnings == 0">
+                                        <template [ngIf]="getCheckstyle(course, group).numberOfErrors + getPmd(course, group).numberOfErrors == 0 && getCheckstyle(course, group).numberOfWarnings + getPmd(course, group).numberOfWarnings == 0">
                                             -
                                         </template>
                                     </template>
-                                    <template [ngIf]="group.checkstyle == null && group.pmd == null">
+                                    <template [ngIf]="getCheckstyle(course, group) == null && getPmd(course, group) == null">
                                         -
                                     </template>
                                 </td>

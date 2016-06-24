@@ -62,13 +62,37 @@
                   "numberOfIgnores": 0,
                   "totalExpendedTime": 90863,
                   "numberOfWarnings": 1,
-                  "numberOfErrors": 48
+                  "numberOfErrors": 48,
+                  "assignments": [
+                    {
+                      "src": [
+                        {
+                          "numberOfIgnores": 0,
+                          "filepath": "src/Übungsblatt5/Aufgabe41.java",
+                          "numberOfErrors": 42,
+                          "numberOfWarnings": 0
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "checkstyle": {
                   "numberOfIgnores": 0,
                   "totalExpendedTime": 76544,
                   "numberOfWarnings": 2247,
-                  "numberOfErrors": 0
+                  "numberOfErrors": 0,
+                  "assignments": [
+                    {
+                      "src": [
+                        {
+                          "numberOfIgnores": 0,
+                          "filepath": "src/Übungsblatt5/Aufgabe41.java",
+                          "numberOfErrors": 200,
+                          "numberOfWarnings": 0
+                        }
+                      ]
+                    }
+                  ]
                 }
               },
               {

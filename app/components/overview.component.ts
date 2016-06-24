@@ -156,6 +156,8 @@ export class OverviewComponent {
     filterCourse: String;
     groupValidation = {};
     courseValidation = {};
+    assignmentList;
+    filterAssignment = {};
 
     constructor(private modal: Modal, renderer: Renderer, private rest: RestService) {
         rest.getCourses().subscribe(
@@ -187,11 +189,11 @@ export class OverviewComponent {
         );
     }
 
-    setGroupValidation(group, value) {
+    private setGroupValidation(group, value) {
         this.groupValidation[group.userId] = value;
     }
 
-    updateGroup(group, json) {
+    private updateGroup(group, json) {
         group.pmd = json.pmd;
         group.checkstyle = json.checkstyle;
     }
@@ -199,5 +201,70 @@ export class OverviewComponent {
     onValidateCourse(event: MouseEvent, course) {
         event.preventDefault();
         this.modal.open(CourseModalWindow, new CourseModalContext(course, this.courseValidation, this.groupValidation));
+    }
+
+    onAssignmentChange(event, course) {
+        this.filterAssignment[course.id] = event.target.value;
+    }
+
+    getAssignments(course): Array<String> {
+        this.assignmentList = {};
+        if (course.groups != null) {
+            for (var group of course.groups) {
+                if (group.pmd != null) {
+                    this.iterateAssignment(group.pmd);
+                }
+                if (group.checkstyle != null) {
+                    this.iterateAssignment(group.checkstyle);
+                }
+            }
+        }
+        return Object.keys(this.assignmentList);
+    }
+
+    private iterateAssignment(type) {
+        if (type.assignments != null) {
+            for (var entry of type.assignments) {
+                for (var assignment in entry) {
+                    this.assignmentList[assignment] = true;
+                }
+            }
+        }
+    }
+
+    getPmd(course: Object, group): Object {
+        return this.getNumberOf(group.pmd, course);
+    }
+
+    getCheckstyle(course: Object, group): Object {
+        return this.getNumberOf(group.checkstyle, course);
+    }
+
+    private getNumberOf(type, course) {
+        if (type == null) {
+            return null;
+        }
+
+        if (this.filterAssignment[course.id] != null && this.filterAssignment[course.id] != "") {
+            return this.calculateAssignments(type, this.filterAssignment[course.id]);
+        } else {
+            return type;
+        }
+    }
+
+    private calculateAssignments(type, currentAssignment) {
+        var result = {numberOfIgnores: 0, numberOfErrors: 0, numberOfWarnings: 0};
+        if (type.assignments != null) {
+            for (var assignment of type.assignments) {
+                if (assignment[currentAssignment] != null) {
+                    for (var file of assignment[currentAssignment]) {
+                        result.numberOfErrors += file.numberOfErrors;
+                        result.numberOfIgnores += file.numberOfIgnores;
+                        result.numberOfWarnings += file.numberOfWarnings;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }

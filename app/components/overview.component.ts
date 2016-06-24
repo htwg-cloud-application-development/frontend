@@ -95,14 +95,6 @@ class CourseModalWindow implements ModalComponent<CourseModalContext> {
         this.context = dialog.context;
     }
 
-    beforeDismiss() {
-        return true;
-    }
-
-    beforeClose() {
-        return true;
-    }
-
     onXClick() {
         this.dialog.destroy();
     }
@@ -127,7 +119,7 @@ class CourseModalWindow implements ModalComponent<CourseModalContext> {
     validateCourse(course) {
         this.setCourseValidation(course, true);
         this.rest.validateCourse(course.id).subscribe(
-            (res: Response) => { this.setCourseValidation(course, null); },
+            (res: Response) => { this.setCourseValidation(course, null); this.updateCourse(course, res.json()); },
             (err: Response) => { this.setCourseValidation(course, null); }
         );
     }
@@ -136,6 +128,17 @@ class CourseModalWindow implements ModalComponent<CourseModalContext> {
         this.context.courseValidation[course.id] = value;
         for (var group of course.groups) {
             this.context.groupValidation[group.userId] = value;
+        }
+    }
+
+    updateCourse(course, json) {
+        for (var newGroup of json.groups) {
+            for (var oldGroup of course.groups) {
+                if (newGroup.userId == oldGroup.userId) {
+                    oldGroup.pmd = newGroup.pmd;
+                    oldGroup.checkstyle = newGroup.checkstyle;
+                }
+            }
         }
     }
 }

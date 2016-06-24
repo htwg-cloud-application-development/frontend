@@ -209,7 +209,29 @@
     {
       "route": "/validator/courses/:id/validate",
       "response": {
-        "body": {}
+        "body": {
+          "id": "2069",
+          "shortname": "CLOUD",
+          "fullname": "Cloud Application Development (Master)",
+          "groups": [
+            {
+              "userId": "6426",
+              "repository": "https://github.com/morph0815/cloud-app-testrepo",
+              "pmd": {
+                "numberOfIgnores": 0,
+                "totalExpendedTime": 90863,
+                "numberOfWarnings": 1,
+                "numberOfErrors": 42
+              },
+              "checkstyle": {
+                "numberOfIgnores": 0,
+                "totalExpendedTime": 76544,
+                "numberOfWarnings": 999,
+                "numberOfErrors": 0
+              }
+            }
+          ]
+        }
       }
     },
     {

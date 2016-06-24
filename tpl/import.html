@@ -5,9 +5,24 @@
         <i class="glyphicon glyphicon-refresh gly-spin"></i>
     </div>
 
-    <div [hidden]="!showSuccess" class="alert alert-success text-center col-md-6  col-md-offset-3" role="alert" style="margin-top: 20px;">
-        <strong>Well done!</strong> Import was successful.
-    </div>
+    <template [ngIf]="showMessage">
+        <template [ngIf]="result.imported != null && result.imported.length > 0">
+            <div class="alert alert-success text-center col-md-6  col-md-offset-3" role="alert" style="margin-top: 20px;">
+                <strong>Well done!</strong> Successful imported courses:
+                <ul>
+                    <li *ngFor="let course of result.imported">{{course}}</li>
+                </ul>
+            </div>
+        </template>
+        <template [ngIf]="result.notImported != null && result.notImported.length > 0">
+            <div class="alert alert-danger text-center col-md-6  col-md-offset-3" role="alert" style="margin-top: 20px;">
+                <strong>Oh snap!</strong> Failed course imports:
+                <ul>
+                    <li *ngFor="let course of result.notImported">{{course}}</li>
+                </ul>
+            </div>
+        </template>
+    </template>
 
     <form [hidden]="!showLogin" class="form-signin" (ngSubmit)="onLoginSubmit()" #login="ngForm">
         <h2 class="form-signin-heading">Please login</h2>

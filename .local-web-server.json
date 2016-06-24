@@ -10,7 +10,18 @@
     {
       "route": "/governance/import/courses/:token",
       "response": {
-        "body": { "ok": true }
+        "body": {
+          "ok": true,
+          "imported": [
+            "Cloud Application Development (Master)"
+          ],
+          "notImported": [
+            "Software Engineering",
+            "Teamprojekt Virtual Reality Models",
+            "Seminar Microservices und Scala in der Lehre",
+            "Modellgetriebene Softwareentwicklung"
+          ]
+        }
       }
     },
     {

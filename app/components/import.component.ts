@@ -18,8 +18,9 @@ export class ImportComponent {
     loginError: boolean;
     showLogin: boolean;
     showLoader: boolean;
-    showSuccess: boolean;
+    showMessage: boolean;
     token: String;
+    result;
 
     constructor(private rest: RestService) {
         this.reset();
@@ -32,12 +33,13 @@ export class ImportComponent {
         this.loginError = false;
         this.showLogin = true;
         this.showLoader = false;
-        this.showSuccess = false;
+        this.showMessage = false;
         this.token = null;
     }
 
     onLoginSubmit() {
-        this.showSuccess = false;
+        this.showMessage = false;
+        this.result = null;
         this.showLoader = true;
         this.rest.login(this.model.username, this.model.password).subscribe((res: Response) => {
             this.handleLogin(res.json());
@@ -70,11 +72,12 @@ export class ImportComponent {
         this.rest.sendImportCourses(this.token, {"courses": this.getSelectedCourses()}).subscribe(
             (res: Response) => {
                 this.reset();
-                this.showSuccess = true;
+                this.showMessage = true;
+                this.result = res.json();
             },
             (err: Response) => {
                 this.reset();
-                this.showSuccess = true;
+                this.showMessage = true;
             });
     }
 

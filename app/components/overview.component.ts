@@ -6,7 +6,6 @@ import { DialogRef, ModalComponent } from 'angular2-modal';
 import { RestService } from '../rest.service';
 import { CoursePipe } from './course.pipe';
 import { ShortenRepoPipe } from './shorten-repo.pipe';
-import { CourseModalWindow, CourseModalContext } from './validation-course.modal';
 import { HeaderDirective, EntriesDirective } from './navbar.directive';
 import { ValuesPipe } from './values.pipe';
 import { KeysPipe } from './keys.pipe';
@@ -21,6 +20,18 @@ class GroupModalContext extends BSModalContext {
         super();
         this.size = 'lg';
     }
+}
+class CourseModalContext extends BSModalContext {
+
+    constructor(public course: Object, public courseValidation: Object, public groupValidation) {
+        super();
+    }
+}
+class Login {
+    constructor(
+        public username: string,
+        public password: string
+    ) {  }
 }
 
 @Component({
@@ -66,6 +77,66 @@ class GroupModalWindow implements ModalComponent<GroupModalContext> {
 
     onXClick() {
         this.dialog.destroy();
+    }
+}
+
+@Component({
+    selector: 'modal-content',
+    templateUrl: '/tpl/modal.login.html',
+    providers: [RestService],
+})
+class CourseModalWindow implements ModalComponent<CourseModalContext> {
+    context: CourseModalContext;
+    model: Login = new Login('', '');
+    loginError: boolean = false;
+    showLoader: boolean = false;
+
+    constructor(public dialog: DialogRef<CourseModalContext>, private rest: RestService) {
+        this.context = dialog.context;
+    }
+
+    beforeDismiss() {
+        return true;
+    }
+
+    beforeClose() {
+        return true;
+    }
+
+    onXClick() {
+        this.dialog.destroy();
+    }
+
+    onLoginSubmit() {
+        this.showLoader = true;
+        this.rest.login(this.model.username, this.model.password).subscribe((res: Response) => {
+            this.handleLogin(res.json());
+        });
+    }
+
+    handleLogin(json) {
+        if (json.token == null) {
+            this.loginError = true;
+            this.showLoader = false;
+        } else {
+            this.validateCourse(this.context.course);
+            this.dialog.destroy();
+        }
+    }
+
+    validateCourse(course) {
+        this.setCourseValidation(course, true);
+        this.rest.validateCourse(course.id).subscribe(
+            (res: Response) => { this.setCourseValidation(course, null); },
+            (err: Response) => { this.setCourseValidation(course, null); }
+        );
+    }
+
+    setCourseValidation(course, value) {
+        this.context.courseValidation[course.id] = value;
+        for (var group of course.groups) {
+            this.context.groupValidation[group.userId] = value;
+        }
     }
 }
 

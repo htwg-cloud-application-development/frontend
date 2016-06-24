@@ -50,13 +50,18 @@ export class OverviewComponent {
         event.preventDefault();
         this.setGroupValidation(group, true);
         this.rest.validateGroup(group.userId).subscribe(
-            (res: Response) => { this.setGroupValidation(group, null); },
+            (res: Response) => { this.setGroupValidation(group, null); this.updateGroup(group, res.json()) },
             (err: Response) => { this.setGroupValidation(group, null); }
         );
     }
 
     setGroupValidation(group, value) {
         this.groupValidation[group.userId] = value;
+    }
+
+    updateGroup(group, json) {
+        group.pmd = json.pmd;
+        group.checkstyle = json.checkstyle;
     }
 
     onValidateCourse(event: MouseEvent, course) {

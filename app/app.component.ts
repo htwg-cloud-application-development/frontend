@@ -3,7 +3,7 @@ import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { OverviewComponent } from './components/overview.component';
-import { ImportComponent } from './components/login.component';
+import { ImportComponent } from './components/import.component';
 import { AboutComponent } from './components/about.component';
 import { DuplicationsComponent } from './components/duplications.component';
 

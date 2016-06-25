@@ -56,7 +56,7 @@
             "fullname": "Cloud Application Development (Master)",
             "groups": [
               {
-                "userId": "6426",
+                "id": "6426",
                 "repository": "https://github.com/morph0815/cloud-app-testrepo",
                 "pmd": {
                   "numberOfIgnores": 0,
@@ -96,7 +96,7 @@
                 }
               },
               {
-                "userId": "6427",
+                "id": "6427",
                 "repository": "https://github.com/example/example1",
                 "pmd": {
                   "numberOfIgnores": 0,
@@ -106,7 +106,7 @@
                 }
               },
               {
-                "userId": "6428",
+                "id": "6428",
                 "repository": "https://github.com/example/example2",
                 "checkstyle": {
                   "numberOfIgnores": 0,
@@ -116,7 +116,7 @@
                 }
               },
               {
-                "userId": "6429",
+                "id": "6429",
                 "repository": "https://github.com/example/example3",
                 "checkstyle": null,
                 "pmd": null
@@ -136,7 +136,7 @@
       "route": "/validator/groups/:id/validate",
       "response": {
         "body": {
-          "userId": "6426",
+          "id": "6426",
           "repository": "https://github.com/morph0815/cloud-app-testrepo",
           "pmd": {
             "numberOfIgnores": 0,
@@ -239,7 +239,7 @@
           "fullname": "Cloud Application Development (Master)",
           "groups": [
             {
-              "userId": "6426",
+              "id": "6426",
               "repository": "https://github.com/morph0815/cloud-app-testrepo",
               "pmd": {
                 "numberOfIgnores": 0,

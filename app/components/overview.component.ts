@@ -52,7 +52,7 @@ class GroupModalWindow implements ModalComponent<GroupModalContext> {
     }
 
     loadPmd(rest: RestService) {
-        rest.getPmdResult(this.context.group.userId).subscribe(
+        rest.getPmdResult(this.context.group.id).subscribe(
             (res: Response) => {
                 this.loaderPmd = false;
                 this.context.pmd = res.json();
@@ -64,7 +64,7 @@ class GroupModalWindow implements ModalComponent<GroupModalContext> {
     }
 
     loadCheckstyle(rest: RestService) {
-        rest.getCheckstyleResult(this.context.group.userId).subscribe(
+        rest.getCheckstyleResult(this.context.group.id).subscribe(
             (res: Response) => {
                 this.loaderCheckstyle = false;
                 this.context.checkstyle = res.json();
@@ -127,14 +127,14 @@ class CourseModalWindow implements ModalComponent<CourseModalContext> {
     setCourseValidation(course, value) {
         this.context.courseValidation[course.id] = value;
         for (var group of course.groups) {
-            this.context.groupValidation[group.userId] = value;
+            this.context.groupValidation[group.id] = value;
         }
     }
 
     updateCourse(course, json) {
         for (var newGroup of json.groups) {
             for (var oldGroup of course.groups) {
-                if (newGroup.userId == oldGroup.userId) {
+                if (newGroup.id == oldGroup.id) {
                     oldGroup.pmd = newGroup.pmd;
                     oldGroup.checkstyle = newGroup.checkstyle;
                 }
@@ -183,14 +183,14 @@ export class OverviewComponent {
     onValidateGroup(event: MouseEvent, group) {
         event.preventDefault();
         this.setGroupValidation(group, true);
-        this.rest.validateGroup(group.userId).subscribe(
+        this.rest.validateGroup(group.id).subscribe(
             (res: Response) => { this.setGroupValidation(group, null); this.updateGroup(group, res.json()) },
             (err: Response) => { this.setGroupValidation(group, null); }
         );
     }
 
     private setGroupValidation(group, value) {
-        this.groupValidation[group.userId] = value;
+        this.groupValidation[group.id] = value;
     }
 
     private updateGroup(group, json) {

@@ -78,11 +78,11 @@
                                     </template>
                                 </th>
                                 <td class="text-center">
-                                    <a href="#" (click)="onValidateGroup($event, group)" *ngIf="groupValidation[group.userId] == null">
+                                    <a href="#" (click)="onValidateGroup($event, group)" *ngIf="groupValidation[group.id] == null">
                                         <span class="glyphicon glyphicon-play text-success" aria-hidden="true"></span>
                                     </a>
 
-                                    <span *ngIf="groupValidation[group.userId] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
+                                    <span *ngIf="groupValidation[group.id] == true" class="glyphicon glyphicon-refresh gly-spin text-info" aria-hidden="true"></span>
                                 </td>
 
                                 <td class="text-right hidden-xs">

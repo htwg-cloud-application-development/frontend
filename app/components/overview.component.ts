@@ -132,7 +132,7 @@ class CourseModalWindow implements ModalComponent<CourseModalContext> {
     }
 
     updateCourse(course, json) {
-        for (var newGroup of json.groups) {
+        for (var newGroup of json) {
             for (var oldGroup of course.groups) {
                 if (newGroup.id == oldGroup.id) {
                     oldGroup.pmd = newGroup.pmd;

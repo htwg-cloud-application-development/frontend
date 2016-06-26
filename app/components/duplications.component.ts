@@ -58,7 +58,7 @@ export class ModalWindow implements ModalComponent<ModalContext> {
     validate(course) {
         this.setRunning(course, true);
         this.rest.validateDuplications(course.id).subscribe(
-            (res: Response) => { this.setRunning(course, null); this.context.course["duplication"] = res.json().duplication; },
+            (res: Response) => { this.setRunning(course, null); this.context.course["duplication"] = res.json(); },
             (err: Response) => { this.setRunning(course, null); }
         );
     }

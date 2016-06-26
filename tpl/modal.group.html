@@ -35,7 +35,7 @@
                         <div *ngFor="let file of assignment[key]; let j = index" class="panel panel-primary">
                             <div class="panel-heading" role="tab">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#checkstyle-{{i}}-{{j}}" aria-expanded="false">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-checkstyle" href="#checkstyle-{{i}}-{{j}}" aria-expanded="false">
                                         {{file.filepath}}
                                         <span class="pull-right">
                                             <span class="glyphicon glyphicon-alert text-danger" aria-hidden="true"></span>
@@ -97,7 +97,7 @@
 
                             <div class="panel-heading" role="tab">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#pmd-{{i}}-{{j}}" aria-expanded="false">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-pmd" href="#pmd-{{i}}-{{j}}" aria-expanded="false">
                                         {{file.filepath}}
                                         <span class="pull-right">
                                             <span class="glyphicon glyphicon-alert text-danger" aria-hidden="true"></span>

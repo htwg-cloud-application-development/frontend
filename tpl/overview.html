@@ -22,7 +22,7 @@
         <div *ngFor="let course of courses | courseFilter:filterCourse" class="panel panel-primary">
             <div class="panel-heading" role="tab">
                 <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{course.id}}" aria-expanded="false">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-courses" href="#collapse-{{course.id}}" aria-expanded="false">
                         {{course.shortname}} - {{course.fullname}}
                     </a>
                     <template [ngIf]="course.groups != null">

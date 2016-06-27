@@ -103,7 +103,7 @@
                                     <template [ngIf]="getPmd(course, group) == null">-</template>
                                 </td>
 
-                                <td class="text-center visible-xs">
+                                <td class="text-center visible-xs text-nowrap">
                                     <template [ngIf]="getCheckstyle(course, group) != null && getPmd(course, group) == null">
                                         <template [ngIf]="getCheckstyle(course, group).numberOfErrors > 0">
                                             <button type="button" class="btn btn-danger" data-toggle="popover" data-placement="top" data-trigger="focus" attr.data-content="{{getCheckstyle(course, group).numberOfErrors}} Errors">

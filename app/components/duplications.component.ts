@@ -63,8 +63,13 @@ export class ModalWindow implements ModalComponent<ModalContext> {
 
     requestDuplications(course) {
         this.rest.getDuplications(course.id).subscribe(
-            (res: Response) => { course.duplication = res.json(); },
-            (err: Response) => {}
+            (res: Response) => {
+                course.duplication = res.json();
+                this.context.collapse.requested[course.id] = true;
+            },
+            (err: Response) => {
+                this.context.collapse.requested[course.id] = true;
+            }
         );
     }
 }
@@ -78,7 +83,7 @@ export class DuplicationsComponent implements AfterViewChecked {
     @ViewChild('accordion') accordion: ElementRef;
     courses: Array<Object> = [];
     running = {};
-    collapse = {init: false, unlocked: false, $target: null};
+    collapse = {init: false, unlocked: false, $target: null, requested: {}};
 
     constructor(private rest: RestService, private modal: Modal) {
         rest.getCourses().subscribe(

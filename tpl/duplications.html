@@ -36,7 +36,8 @@
                         </button>
                     </template>
 
-                    <template [ngIf]="course.duplication == null">
+                    {{ requested | json }}
+                    <template [ngIf]="collapse.requested[course.id] == null">
                         <div class="loader text-center">
                             <i class="glyphicon glyphicon-refresh gly-spin"></i>
                         </div>

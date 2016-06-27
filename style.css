@@ -168,3 +168,7 @@ body {
 .text-pad-left {
     padding-left: 10px;
 }
+
+.valid-btn {
+    margin-bottom: 15px;
+}

@@ -279,6 +279,33 @@
           ]
         }
       }
+    },
+    {
+      "route": "/validator/groups/:id/cpd/last-result",
+      "response": {
+        "body": {
+          "totalExpendedTime": 29388,
+          "assignments": "",
+          "numberOfDuplications": 132,
+          "duplications": [
+            {
+              "duplication": {
+                "codefragment": "public class ...",
+                "duplicatedLines": 85,
+                "tokens": 615,
+                "filePaths": [
+                  {
+                    "filePath": "SomeRandomPathToClass.java"
+                  },
+                  {
+                    "filePath": "AnotherRandomPathToClass.java"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
     }
   ]
 }

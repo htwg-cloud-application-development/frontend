@@ -93,4 +93,8 @@ export class RestService {
     sendImportCourses(token: String, body: Object): Observable<Response> {
         return this.httpPost("/governance/import/courses/" + token, JSON.stringify(body));
     }
+
+    getDuplications(courseId: number): Observable<Response> {
+        return this.httpGet('/validator/groups/' + courseId + '/cpd/last-result');
+    }
 }

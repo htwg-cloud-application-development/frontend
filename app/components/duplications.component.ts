@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { NavbarDirective } from './navbar.directive';
 import { DialogRef, ModalComponent } from 'angular2-modal';
 import { BSModalContext, Modal } from 'angular2-modal/plugins/bootstrap';
@@ -16,7 +16,7 @@ class Login {
 }
 
 class ModalContext extends BSModalContext {
-    constructor(public course: Object, public collapse: Object) {
+    constructor(public course: Object, public collapse) {
         super();
     }
 }
